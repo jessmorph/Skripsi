@@ -1,39 +1,69 @@
 %versi 2 (8-10-2016) 
+\newcommand{\oj}{\textit{online judge }}
+
 \chapter{Pendahuluan}
 \label{chap:intro}
+Pada bab ini, akan dibahas mengenai latar belakang penelitian, rumusan masalah, tujuan, batasan masalah, dan sistematika pembahasan yang dilakukan pada penelitian ini.
    
 \section{Latar Belakang}
 \label{sec:label}
 
-Bagian ini akan diisi dengan apa yang melatarbelakangi pembuatan template skripsi ini.
-Termasuk juga masalah-masalah yang akan dihadapi untuk membuatnya, termasuk kurangnya kemampuan penguasaan \LaTeX{} sehingga template ini dibuat dengan mengandalkan berbagai contoh yang tersebar di dunia maya, yang digabung-gabung menjadi satu jua.
-Bagian lain juga akan dilengkapi, untuk sementara diisi dengan lorem ipsum versi bahasa inggris.
+\textit{Online judge} merupakan sebuah sistem yang dirancang untuk melakukan evaluasi dari sumber kode algoritma yang dikirimkan oleh pengguna \cite{online_judge2001}. Konsep dari \oj adalah dengan asumsi pengguna mengirimkan solusi berupa kode program, atau bahkan pengguna mengirimkan \textit{file} yang dapat dijalankan dimana tahap selanjutnya kode atau \textit{file}  tersebut akan dievaluasi yang sering kali menggunakan infrastruktur berbasis \textit{cloud}. Dalam perancangan \oj harus dipastikan bahwa \oj harus dapat menanggulangi berbagai macam serangan seperti memaksakan waktu kompilasi yang tinggi, atau mengakses sumber daya yang dibatasi selama proses evaluasi berlangsung.
 
-\dtext{5-10}
+Sharif Judge merupakan salah satu \oj yang gratis untuk bahasa pemrograman C, C++, Java dan Python . Perangkat lunak ini diciptakan oleh Mohammad Javad Naderi pada tahun 2014 dan bersifat \textit{open source}. Antarmuka Sharif Judge ditulis menggunakan bahasa pemrograman PHP (framework CodeIgniter) dan backend menggunakan BASH\footnote{https://github.com/mjnaderi/Sharif-Judge}.
+
+Sharif Judge biasa digunakan untuk mempermudah evaluasi kode program. dan salah satu universitas yang menggunakannya adalah Universitas Katolik Parahyangan (UNPAR) pada jurusan Informatika (IF). Namun Sharif Judge telah dimodifikasi dan berubah namanya menjadi SharIF-Judge. SharIF-Judge ini digunakan pada beberapa kuliah di IF, seperti Dasar Pemrograman dan Algoritma Struktur Data. Tujuan SharIF-Judge digunakan pada perkuliahan, adalah agar dapat mempermudah kegiatan belajar mengajar berlangsung. Mahasiswa dapat dengan mudah melakukan pengiriman kode program atau \textit{file} ke SharIF-Judge dan dapat langsung melihat nilainya. Pengajar yang bertanggung jawab atas kegiatan belajar mengajar tersebut tidak akan kesusahan dalam mengumpulkan hasil pekerjaan para pelajar. 
+
+Alur dari penggunaan SharIF-Judge ini diawali dengan pengajar yang membuat soal terlebih dahulu. Setelah soal disiapkan, pengajar dapat membuat \textit{assignment} dengan click tombol \textit{add assignment}. Didalamnya, pengajar diwajibkan untuk memasukan nama \textit{assignment}, waktu dimulainya pengerjaan, waktu selesai pengerjaan, waktu tambahan pengerjaan, daftar peserta, deskripsi soal, dan kunci jawaban dari soal yang sudah dibuat oleh pengajar. Meskipun SharIF-Judge dapat membaca berbagai bahasa pemrograman, JavaScript bukan salah satu yang dapat dibaca oleh SharIF-Judge.
+
+JavaScript adalah bahasa skrip sisi klien yang berjalan sepenuhnya di dalam \textit{browser web}\cite{javascript101}. Sebagai contoh dapat dilihat \textit{menu drop-down} yang mencolok, memindahkan teks, dan mengubah konten yang sekarang tersebar luas di situs web. Semua interaksi tersebut diaktifkan melalui JavaScript. Berdasarkan survey dari \url{https://insights.stackoverflow.com/survey/2021}, selama 9 tahun berturut-turut, JavaScript merupakan bahasa pemrograman yang paling sering digunakan. 64,96\% orang di dunia menggunakannya.
+
+Berdasarkan data diatas, ditunjukan bahwa JavaScript termasuk dalam bahasa pemrograman yang sangat populer dan banyak digunakan. Sangat disayangkan jika SharIF Judge tidak dapat membaca bahasa tersebut. Akan kesulitan bagi para pengajar karena harus mengikuti perkembangan zaman, namun pemeriksaannya tidak mudah. Kostumisasi dari SharIF Judge akan dilakukan agar \textit{online judge} tersebut dapat membaca JavaScript. Untuk mempermudah kostumasi, pengerjaan akan dilakukan dengan menggunakan OS Linux. Namun dikarenakan OS yang digunakan adalah Windows, akan digunakan \textit{virtual machine} agar dapat mengerjakan dengan OS Linux pada Windows. 
+
 
 \section{Rumusan Masalah}
 \label{sec:rumusan}
-Bagian ini akan diisi dengan penajaman dari masalah-masalah yang sudah diidentifikasi di bagian sebelumnya. 
+Berdasarkan latar belakang tersebut, maka terbentuklah rumusan masalah penelitian sebagai berikut: 
 
-\dtext{6}
+     Bagaimana cara agar SharIF Judge dapat memahami bahasa pemrograman JavaScript untuk dievaluasi.
+
+
 
 \section{Tujuan}
 \label{sec:tujuan}
-Akan dipaparkan secara lebih terperinci dan tersturkur apa yang menjadi tujuan pembuatan template skripsi ini
+Berdasarkan rumusan masalah, maka tujuan penelitian ini adalah sebagai berikut:
+\begin{enumerate}
+    \item Mempelajari cara kerja dan merancang soal pada Sharif Judge.
+    \item Mempelajari kode program Sharif Judge agar dapat mengintegrasi JavaScript.
+    \item Memodifikasi Sharif Judge agar dapat memasukan soal JavaScript dan dapat mengevaluasi JavaScript.
+\end{enumerate}
 
-\dtext{7}
 
 \section{Batasan Masalah}
 \label{sec:batasan}
-Untuk mempermudah pembuatan template ini, tentu ada hal-hal yang harus dibatasi, misalnya saja bahwa template ini bukan berupa style \LaTeX{} pada umumnya (dengan alasannya karena belum mampu jika diminta membuat seperti itu)
+Batasan masalah yang terdapat pada penelitian ini adalah:
+\begin{enumerate}
+    \item Pembuatan program menggunakan docker sebagai penyambung Linux karena dalam pembuatan program menggunakan Windows.
+    \item Versi PHP 5.3 atau lebih.
+\end{enumerate}
 
-\dtext{8}
+
+
+
+
+
 
 \section{Metodologi}
 \label{sec:metlit}
-Tentunya akan diisi dengan metodologi yang serius sehingga templatenya terkesan lebih serius.
-
-\dtext{9}
+Metodologi yang digunakan dalam penelitian ini adalah sebagai berikut:
+\begin{enumerate}
+    \item melakukan studi literatur terhadap Sharif Judge, JavaScript, Java
+    \item Mempelajari dan menganalisa cara pembuatan soal pada Sharif Judge dengan menggunakan bahasa pemrograman Java
+    \item Mempelajari cara membuat tes kasus dan menganalisa cara kerjanya pada Sharif Judge dengan menggunakan bahasa pemrograman Java
+    \item Membuat kode program agar Sharif Judge dapat membaca soal dari JavaScript dan dapat mengevaluasi berdasarkan tes kasus.
+    \item Melakukan testing terhadap Sharif Judge
+    \item Melaporkan hasil pembuatan dalam bentuk dokumen skripsi
+\end{enumerate}
 
 \section{Sistematika Pembahasan}
 \label{sec:sispem}
@@ -41,4 +71,7 @@ Rencananya Bab 2 akan berisi petunjuk penggunaan template dan dasar-dasar \LaTeX
 Mungkin bab 3,4,5 dapt diisi oleh ketiga jurusan, misalnya peraturan dasar skripsi atau pedoman penulisan, tentu jika berkenan.
 Bab 6 akan diisi dengan kesimpulan, bahwa membuat template ini ternyata sungguh menghabiskan banyak waktu.
 
-\dtext{10}
+
+
+
+
