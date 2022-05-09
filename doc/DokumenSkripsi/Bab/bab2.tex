@@ -3,28 +3,477 @@
 \label{chap:teori}
 Pada bab ini, dibahas mengenai teori–teori yang digunakan dalam penelitian ini yaitu: \textit{CodeIgniter}, Dokumentasi SharIF-Judge, \textit{BASH}, \textit{JavaScript}, dan PHP
 
-\section{JavaScript}
+\section{\textit{JavaScript}}
 \label{sec:JavaScript} 
-JavaScript merupakan bahasa pemrograman berorientasi objek berdasarkan model objek berbasis prototipe\cite{javascript_programming}.  Bahasa ini terkenal karena penggunaannya sebagai bahasa scripting di web. JavaScript dianggap sebagai blok pembangun utama HTML yang Dinamis dimana kumpulan teknologi yang disertakan pada hampir semua browser web dalam mendukung pembuatan situs web animasi dan interaktif. Saat terintegrasi di dalam browser web, implementasi JavaScript menyertakan sekumpulan pustaka yang secara kolektif disebut sebagai ``\textit{Client-Side JavaScript}'' Sebaliknya, bahasa JavaScript dan pustaka inti JavaScript (yaitu, pustaka yang mandiri dari web) biasanya disebut sebagai ``\textit{Core JavaScript}''. Berikut ini merupakan kelebihan yang dimiliki oleh \textit{JavaScript} \footnote{\url{https://data-flair.training/blogs/advantages-disadvantages-javascript/}} :
-\begin{itemize}
-    \item Kecepatan \newline
-    \textit{JavaScript} merupakan bahasa yang ``ditafsirkan'' dan hal ini dapat mengurangi waktu yang dibutuhkan oleh bahasa pemrograman lain seperti java untuk kompilasi
-    \item \textit{Versatility} \newline
-    JavaScript sekarang mampu pengembangan front-end serta back-end. Pengembangan back-end menggunakan NodeJS sementara banyak \textit{library} membantu dalam pengembangan front-end seperti AngularJS, ReactJS, dll. 
-    \item \textit{Server Load} \newline
-    Karena JavaScript beroperasi di sisi klien, validasi data dapat dilakukan pada browser tersebut tanpa mengirimkannya lagi ke server. Jika ada perbedaan, seluruh situs web tidak perlu dimuat ulang. Browser hanya perlu memperbarui segmen halaman yang dipilih. 
-    \item Popularitas \newline
-     \textit{Browser} modern mendukung JavaScript dan banyak perusahaan terkenal menggunakan JavaScript termasuk Google, Amazon, PayPal, dll. 
-\end{itemize}
+Sementara HTML dan CSS membantu membuat desain halaman web, JavaScript membantu membuat fungsionalitas di halaman web \cite{javascriptlearn}. Java dan JavaScript memiliki nama yang sama tetapi keduanya merupakan bahasa pemrograman yang sangan berbeda.
 
-\section{CodeIgniter}
+%JavaScript merupakan bahasa pemrograman berorientasi objek berdasarkan model objek berbasis prototipe\cite{javascript_programming}.  Bahasa ini terkenal karena penggunaannya sebagai bahasa scripting di web. JavaScript dianggap sebagai blok pembangun utama HTML yang Dinamis dimana kumpulan teknologi yang disertakan pada hampir semua browser web dalam mendukung pembuatan situs web animasi dan interaktif. Saat terintegrasi di dalam browser web, implementasi JavaScript menyertakan sekumpulan pustaka yang secara kolektif disebut sebagai ``\textit{Client-Side JavaScript}'' Sebaliknya, bahasa JavaScript dan pustaka inti JavaScript (yaitu, pustaka yang mandiri dari web) biasanya disebut sebagai ``\textit{Core JavaScript}''% 
+
+\subsection{Strings}
+\label{sec: Strings}
+    Pada JavaScript, String merupakan nilai yang terdiri dari teks dan dapat berisi huruf, angka, simbol, tanda baca, dan emoji\cite{javascriptlearn}. String \textit{JavaScript} terkandung dalam sepasang tanda kutip tunggal (') atau tanda kutip ganda (''). Kedua tanda kutip mewakili String tetapi pastikan untuk memilih salah satu. Jika dimulai dengan satu kutipan, maka harus diakhiri dengan satu kutipan. Sebagai contoh penulisannya adalah sebagai berikut:
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE
+'This is a string.';
+"This is the 2nd string.";
+    \end{lstlisting}
+    String tersebut tidak hanya untuk penulisan teks saja, namun ada berbagai fungsi logis yang dapat digunakan oleh pengguna yaitu sebagai berikut: 
+    \begin{itemize}
+        \item \textit{JavaScript String Length}\newline
+        Tujuan fungsi logis ini adalah untuk menghitung panjang dari karater yang dituliskan. Contoh penulisannya adalah sebagai berikut: 
+        \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+"caterpillar".length;
+OUTPUT:
+11
+        \end{lstlisting}
+        \item \textit{toLowerCase Method}\newline
+        Fungsi logis \textit{toLowerCase} string dalam \textit{JavaScript} mengembalikan salinan string dengan huruf-hurufnya dikonversi menjadi huruf kecil. Namun untuk angka, simbol, dan karakter lain tidak terpengaruh dengan fungsi logis tersebut. Contoh penulisannya adalah sebagai berikut: 
+         \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+"THE KIDS".toLowerCase();
+OUTPUT:
+"the kids"
+        \end{lstlisting}
+        \item \textit{toUpperCase Method}\newline
+        Fungsi logis \textit{toUpperCase} string mengembalikan salinan string dengan huruf yang dikonversi menjadi huruf besar.Namun untuk angka, simbol, dan karakter lain tidak terpengaruh dengan fungsi logis tersebut. Contoh penulisannya adalah sebagai berikut: 
+         \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+"I wish I were big.".toUpperCase();
+OUTPUT:
+"I WISH I WERE BIG."
+        \end{lstlisting}
+        \item \textit{trim}\newline
+        Fungsi logis \textit{trim} string mengembalikan salinan string dengan karakter spasi awal dan akhir dihapus. Contoh penulisannya adalah sebagai berikut: 
+        \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+"   but keep the middle spaces   ".trim();
+OUTPUT:
+"but keep the middle spaces"
+        \end{lstlisting}
+    \end{itemize}
+    
+\subsection{\textit{Numbers}}
+\label{sec: Numbers}
+   Bilangan adalah nilai yang dapat digunakan dalam operasi matematika\cite{javascriptlearn}. Untuk penulisan sintaks tidak diperlukan sesuatu yang khusus untuk angka dan cukup tuliskan langsung ke JavaScript. Contoh penulisannya adalah sebagai berikut: 
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE
+12345;
+    \end{lstlisting}
+    \textit{Numbers} tersebut tidak hanya untuk penulisan angka saja, namun ada berbagai jenis yang dapat digunakan oleh pengguna yaitu sebagai berikut: 
+    \begin{itemize}
+        \item \textit{Decimals and fractions}\newline
+        \textit{JavaScript} tidak membedakan antara bilangan bulat dan desimal, sehingga Anda dapat menggunakannya bersama-sama tanpa harus mengonversi dari satu ke yang lain. Contoh penulisannya adalah sebagai berikut: 
+        \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+10 + 3.14159;
+OUTPUT:
+13.14159
+        \end{lstlisting}
+        \item \textit{Fractions}\newline
+        Pecahan tidak ada dalam \textit{JavaScript}, tetapi dapat ditulis ulang sebagai masalah pembagian menggunakan operator pembagian ``/''. Perhatikan bahwa angka yang dihasilkan selalu dikonversi ke desimal sama seperti dengan kalkulator. Contoh penulisannya adalah sebagai berikut: 
+        \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+1 / 3;
+OUTPUT:
+0.3333333333333333
+        \end{lstlisting}
+        Untuk menggunakan bilangan campuran, diperlukan penggabungan bilangan bulat dan pecahan. Contoh penulisannya adalah sebagai berikut: 
+        \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+1 + (4 / 3);
+OUTPUT:
+2.333333333333333
+        \end{lstlisting}
+        \item \textit{Negative numbers}\newline
+        Penulisan angka negatif dengan menempatkan operator di depan. Contoh penulisannya adalah sebagai berikut: 
+        \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+-3;
+OUTPUT:
+-3;
+        \end{lstlisting}
+        Angka negatif dapat juga diperoleh dengan mengurangi angka dari angka yang lebih kecil. Contoh penulisannya adalah sebagai berikut: 
+        \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+5-7;
+OUTPUT:
+-2;
+        \end{lstlisting}
+    \end{itemize}
+
+\subsection{\textit{Booleans}}
+\label{sec: Booleans}
+    Dalam JavaScript, nilai boolean adalah nilai yang dapat berupa \textit{TRUE} atau \textit{FALSE}\cite{javascriptlearn}. Jika diperlukan mengetahui "ya" atau "tidak" tentang sesuatu, maka fungsi boolean merupakan fungsi yang tepat. Apa pun yang perlu "aktif" atau "mati", "ya" atau "tidak", "benar" atau "salah", atau yang hanya memiliki tujuan sementara, biasanya tepat untuk menggunakan boolean. Contoh penulisannya adalah sebagai berikut:
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+var kitchenLights = false;
+kitchenLights = true;
+kitchenLights;
+OUTPUT:
+true
+        \end{lstlisting}
+        Dalam contoh ini, variabel "kitchenLights" yang disetel ke "true" akan menunjukkan bahwa lampu menyala. Jika disetel ke "false" maka itu berarti mereka tidak aktif. Menyimpan boolean dalam variabel bertujuan untuk melacak nilainya dan mengubahnya dari waktu ke waktu. Boolean digunakan sebagai fungsi untuk mendapatkan nilai variabel, objek, kondisi, dan ekspresi. Faktanya, boolean sangat penting agar kondisional berfungsi.
+        
+\subsection{\textit{Operators}}
+\label{sec: Operators}
+   Operator adalah simbol antara nilai yang memungkinkan operasi yang berbeda seperti penambahan, pengurangan, perkalian, dan banyak lagi\cite{javascriptlearn}. Berikut ini merupakan operator yang dimiliki oleh \textit{javaScript}.
+   \begin{itemize}
+        \item \textit{Arithmetic}\newline
+        Operator + menambahkan dua angka. Contoh penulisannya adalah sebagai berikut: 
+        \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+1+2;
+OUTPUT:
+3
+        \end{lstlisting}
+        Operator - mengurangi satu angka dari angka lainnya. Contoh penulisannya adalah sebagai berikut: 
+        \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+50 - 15;
+OUTPUT:
+35
+        \end{lstlisting}
+        Untuk menggunakan bilangan campuran, diperlukan penggabungan bilangan bulat dan pecahan. Contoh penulisannya adalah sebagai berikut:  
+        \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+1 + (4 / 3);
+OUTPUT:
+2.333333333333333
+        \end{lstlisting}
+        Operator * mengalikan dua angka. Perhatikan bahwa itu adalah tanda bintang dan bukan simbol × yang biasa digunakan dalam matematika. Contoh penulisannya adalah sebagai berikut: 
+        \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+3 * 12;
+OUTPUT:
+36
+        \end{lstlisting}
+        Operator / membagi satu nomor dengan yang lain. Perhatikan bahwa itu adalah garis miring dan bukan simbol yang biasa digunakan dalam matematika. Contoh penulisannya adalah sebagai berikut: 
+        \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+12/4;
+OUTPUT:
+3;
+        \end{lstlisting}
+            Ekspresi JavaScript mengikuti urutan operasi, jadi meskipun + ditulis terlebih dahulu dalam contoh berikut, perkalian terjadi lebih dulu antara dua angka terakhir dan *. Contoh penulisannya adalah sebagai berikut: 
+        \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+1 + 100 * 5;
+OUTPUT:
+501
+        \end{lstlisting}
+        \item \textit{Grouping} \newline
+        () operator mengelompokkan nilai dan operasi lain. Kode yang terletak di antara tanda kurung dievaluasi terlebih dahulu saat JavaScript menyelesaikan setiap operasi yang bergerak dari kiri ke kanan. Menambahkan operator pengelompokan ke contoh sebelumnya menyebabkan 1 + 100 dievaluasi terlebih dahulu. Contoh penulisannya adalah sebagai berikut: 
+        \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+(1 + 100) * 5;
+OUTPUT:
+505
+        \end{lstlisting}
+        \item \textit{Concatenation} \newline
+        Operator + juga dapat menggabungkan string. Contoh penulisannya adalah sebagai berikut: 
+        \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+"news" + "paper";
+OUTPUT:
+"newspaper"
+        \end{lstlisting}
+        \item \textit{Assignment} \newline
+        Operator = memberikan nilai. Ini digunakan untuk mengatur nilai variabel. Contoh penulisannya adalah sebagai berikut: 
+        \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+var dinner = "sushi";
+        \end{lstlisting}
+    \end{itemize}
+
+\subsection{\textit{Variables}}
+\label{sec: Variables}
+   Variabel diberi nama nilai dan dapat menyimpan semua jenis nilai JavaScript\cite{javascriptlearn}. Contoh penulisannya adalah sebagai berikut: 
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE
+var x = 100;
+    \end{lstlisting}
+    Penulisan diatas menyatakan hal sebagai berikut:
+    \begin{itemize}
+        \item var merupakan kata yang menyatakan kepada \textit{javascript} ingin mendeklarasikan sebuah variabel
+        \item x adalah nama dari variabel yang dideklarasikan
+        \item = merupakan operator yang menyatakan kepada \textit{javascript} bahwa kata selanjutnya adalah nilai dari variabel tersebut
+        \item 100 adalah nilai dari variabel untuk disimpan
+    \end{itemize}
+    \begin{itemize}
+        \item \textit{Using Variables}\newline
+        Setelah mendeklarasikan variabel, variabel dapat direferensikan dengan nama di tempat lain dalam kode Anda. Contoh penulisannya adalah sebagai berikut: 
+        \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+var x = 100;
+x + 102;
+OUTPUT:
+202
+        \end{lstlisting}
+        nama variabel bahkan digunakan saat mendeklarasikan variabel lain.
+        \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+var x = 100;
+var y = x + 102;
+y;
+OUTPUT:
+202
+        \end{lstlisting}
+        \item \textit{Reassigning variables}\newline
+        Nilai baru dapat diberikan pada variabel yang ada kapan saja setelah dideklarasikan.
+        
+        \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+var weather = "rainy";
+weather = "sunny";
+weather;
+OUTPUT:
+"sunny"
+        \end{lstlisting}
+
+        \item \textit{Naming variables}\newline
+        Penulisan nama variabel cukup fleksibel, namun ada beberapa aturan yang harus diikuti yaitu sebagai berikut: 
+        \begin{itemize}
+         \item Nama variabel harus diawali dengan huruf, garis bawah ``\_'', atau dolar ``\$''.
+         \item Setelah huruf pertama, dapat digunakan angka, huruf, garis bawah, atau tanda dolar.
+         \item Dilarang menggunakan kata kunci khusus dari \textit{JavaScript} apapun.
+        \end{itemize}
+        Maka dari itu berikut ini adalah contoh penulisan nama variabel yang valid 
+         \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+            columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+var camelCase = "lowercase word, then uppercase";
+var dinner2Go = "pizza";
+var I_AM_HUNGRY = true;
+var _Hello_ = "what a nice greeting"
+var $_$ = "money eyes";
+        \end{lstlisting}
+    \end{itemize}
+        --------------------------------------------------------------
+\subsection{\textit{Functions}}
+\label{sec: Functions}
+   Fungsi \textit{JavaScript} adalah blok kode yang dapat digunakan kembali yang melakukan tugas tertentu, mengambil beberapa bentuk input dan mengembalikan output\cite{javascriptlearn}. Untuk mendefinisikan suatu fungsi, harus digunakan kata kunci fungsi, diikuti dengan nama, diikuti dengan tanda kurung ``( )''. Kemudian dituliskan logika fungsi di antara tanda kurung kurawal ``{}''. Contoh penulisannya adalah sebagai berikut: 
+         \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+            columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE
+function addTwoNumbers(x, y) {
+    return x + y;
+}
+    \end{lstlisting}
+    Setelah fungsi JavaScript didefinisikan atau dideklarasikan, fungsi dapat digunakan dengan merujuk namanya dengan tanda kurung tepat setelahnya. Perhatikan bahwa suatu fungsi tidak harus memiliki parameter.
+         \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+            columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+function greetThePlanet() {
+    return "Hello world!";
+}
+greetThePlanet();
+OUTPUT:
+"Hello world!"
+    \end{lstlisting}
+    Namun, jika suatu fungsi memiliki parameter, Anda harus memberikan nilai di dalam tanda kurung saat menggunakan fungsi:
+         \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+            columns=fullflexible, breaklines=true, numbers=none]
+EXAMPLE:
+function square(number) {
+    return number * number;
+}
+square(16);
+OUTPUT:
+256
+    \end{lstlisting}
+    Dalam contoh di atas, \textit{number} tersebut harus diberikan angka agar fungsi berfungsi dan menerima output yang sesuai. Jika tidak, kode Anda tidak akan berfungsi dan Anda akan mendapatkan pesan kesalahan. Jika fungsi tersebut membutuhkan lebih dari satu argumen, pisahkan dengan menggunakan koma di dalam tanda kurung tersebut.
+    
+\subsection{\textit{Conditionals}}
+\label{sec: Conditionals}
+    \textit{Conditional statements} mengontrol perilaku dalam \textit{JavaScript} dan menentukan apakah potongan kode dapat dijalankan atau tidak\cite{javascriptlearn}. Terdapat 3 jenis kondisional dalam \textit{JavaScript} yaitu sebagai berikut: 
+    \begin{itemize}
+        \item \textit{IF}: di mana jika suatu kondisi benar, itu digunakan untuk menentukan eksekusi untuk blok kode.
+        \item \textit{ELSE}: di mana jika kondisi yang sama salah, itu menentukan eksekusi untuk blok kode.
+        \item \textit{ELSE IF}: ini menentukan tes baru jika kondisi pertama salah.
+    \end{itemize}
+    Berikut merupakan Contoh penulisan untuk \textit{IF}: 
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+    EXAMPLE:
+    if (10 > 5) {
+    var outcome = "if block";
+    }
+    outcome;
+    OUTPUT:
+    "if block"
+    \end{lstlisting}
+    Berikut merupakan contoh penulisan untuk \textit{ELSE}
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+    EXAMPLE:
+if ("cat" === "dog") {
+      var outcome = "if block";
+} else {
+      var outcome = "else block";
+}
+outcome;
+    OUTPUT:
+    "else block"
+    \end{lstlisting}
+    Berikut merupakan contoh penulisan untuk \textit{ELSE IF}
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+    EXAMPLE:
+    if (false) {
+      var outcome = "if block";
+    } else if (true) {
+      var outcome = "else if block";
+    } else {
+      var outcome = "else block";
+    }
+    outcome;
+    OUTPUT:
+    "else if block"
+    \end{lstlisting}
+
+\subsection{\textit{Arrays}}
+\label{sec: Arrays}
+Array adalah nilai seperti wadah yang dapat menampung nilai lain\cite{javascriptlearn}. Nilai-nilai di dalam array disebut elemen. Contoh penulisannya sebagai berikut: 
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+    EXAMPLE:
+    var breakfast = ["coffee", "croissant"];
+    breakfast;
+    OUTPUT:
+    ["coffee", "croissant"]
+    \end{lstlisting}
+    Elemen pada array tidak semuanya harus memiliki tipe nilai yang sama. Elemen dapat berupa nilai JavaScript apa pun bahkan array lainnya. Contohnya penulisannya sebagai berikut: 
+        \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+    EXAMPLE:
+    var hodgepodge = [100, "paint", [200, "brush"], false];
+    hodgepodge;
+    OUTPUT:
+    [100, "paint", [200, "brush"], false]
+    \end{lstlisting}
+    Untuk mengakses salah satu elemen di dalam array, harus digunakan tanda kurung dan angka seperti ini: myArray[3]. Array JavaScript dimulai dari 0, jadi elemen pertama akan selalu berada di dalam [0].
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+    EXAMPLE:
+    var sisters = ["Tia", "Tamera"];
+    sisters[0];
+    OUTPUT:
+    "Tia"
+    \end{lstlisting}
+    Untuk mendapatkan elemen terakhir, Anda dapat menggunakan tanda kurung dan `1` kurang dari properti panjang larik.
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+    EXAMPLE:
+    var actors = ["Felicia", "Nathan", "Neil"];
+    actors[actors.length - 1];
+    OUTPUT:
+    "Neil"
+    \end{lstlisting}
+    
+\subsection{\textit{Objects}}
+\label{sec: Objects}
+Objek pada JavaScript adalah variabel yang berisi beberapa nilai data. Nilai dalam objek JavaScript dikenal sebagai properti\cite{javascriptlearn}. Objek menggunakan kunci untuk menamai nilai, seperti yang dilakukan dengan variabel. Contohnya adalah sebagai berikut: 
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+    EXAMPLE:
+    var course = {
+       name: "GRA 2032",
+       start: 8,
+       end: 10
+    };
+    \end{lstlisting}
+    Ada dua cara untuk mengakses nilai properti objek. Dapat digunakan notasi titik dengan nama properti setelah titik objectName.propertyName seperti pada contoh di bawah ini:
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+    EXAMPLE:
+    var course = {
+       name: "GRA 2032",
+       start: 8,
+       end: 10
+    };
+    course.name;
+    OUTPUT:
+    "GRA 2032"
+    \end{lstlisting}
+    Atau Dapat digunakan notasi braket dengan nama properti di dalam string di dalam tanda kurung siku - objectName[“propertyName”] seperti pada contoh di bawah ini:
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+    EXAMPLE:
+    var course = {
+       name: "GRA 2032",
+       start: 8,
+       end: 10
+    };
+    course["name"];
+    OUTPUT:
+    "GRA 2032"
+    \end{lstlisting}
+    
+\section{CodeIgniter 3}
 \label{sec:CodeIgniter} 
  
-CodeIgniter merupakan sebuah framework bagi pengguna yang ingin membangun web application dengan menggunakan bahasa pemrograman berbasis PHP\cite{codeigniter}. Tujuan utamanya adalah untuk mempercepat pengerjaan para pengguna agar tidak perlu menuliskan kode dari awal. Dengan menyediakan kumpulan libraries yang kaya untuk tugas-tugas umum yang dibutuhkan, serta antarmuka sederhana dan struktur logis untuk mengakses pustaka ini. CodeIgniter versi publik pertama kali dirilis pada 28 Februari 2006, dan versi stabil terbaru v4.1.9 yang dirilis pada 24 Februari 2020 yaitu CodeIgniter 4
+CodeIgniter merupakan sebuah \textit{framework} bagi pengguna yang ingin membangun \textit{web application} dengan menggunakan bahasa pemrograman berbasis PHP\cite{codeigniter}. Tujuan utamanya adalah untuk mempercepat pengerjaan para pengguna agar tidak perlu menuliskan kode dari awal. Dengan menyediakan kumpulan \textit{libraries} yang kaya untuk tugas-tugas umum yang dibutuhkan, serta antarmuka sederhana dan struktur logis untuk mengakses pustaka ini. SharIF-Judge menggunakan CodeIgniter 3. Untuk dapat menggunakan CodeIgniter 3 direkomendasikan PHP versi 5.6 atau yang lebih baru dari itu dengan alasan agar tidak memiliki permasalahan terhadap bagian keamanan, permasalahan perfoma, dan adanya fitur yang hilang. Database yang dapat didukung oleh CodeIgniter 3 adalah sebagai berikut:
+\begin{itemize}
+    \item MySQL (5.1+) via the mysql (deprecated), mysqli and pdo drivers
+    \item Oracle via the oci8 and pdo drivers
+    \item PostgreSQL via the postgre and pdo drivers
+    \item MS SQL via the mssql, sqlsrv (version 2005 and above only) and pdo drivers
+    \item SQLite via the sqlite (version 2), sqlite3 (version 3) and pdo drivers
+    \item CUBRID via cubrid dan pdo \textit{drivers}
+    \item Interbase/Firebird via ibase dan pdo \textit{drivers}
+    \item ODBC via the odbc dan pdo \textit{drivers} 
+\end{itemize}
+
+\subsection{\textit{Application Flow Chart}}
+\label{sec: Application Flow Chart}
+
+Gambar \ref{fig:flowchart} merupakan ilustrasi bagaimana data mengalir ke seluruh sistem\cite{codeigniter}.
+ \begin{figure}[h!]
+     \centering
+     \includegraphics[width=0.9\linewidth]{Gambar/appflowchart.png}
+     \caption{\textit{Flow Chart}Aplikasi}
+     \label{fig:flowchart}
+ \end{figure}
+ 
+Berikut ini merupakan penjelasan secara urut dari awal sampai akhir bagaimana sistem mengalir:
+\begin{enumerate}
+    \item \textit{File} \textit{index.php} berfungsi sebagai pengontrol depan, menginisialisasi sumber daya dasar yang diperlukan untuk menjalankan CodeIgniter.
+    \item Router memeriksa permintaan HTTP untuk menentukan apa yang harus dilakukan.
+    \item Jika terdapat \textit{file cache}, maka akan langsung dikirimkan ke \textit{browser}. \textit{File cache} adalah data yang pernah diakses oleh pengguna. Data tersebut dapat berupa teks, gambar atau file.
+    \item \textit{HTTP request} dan data pengguna yang dikirim akan disaring terlebih dahulu untuk keamanan. \textit{Application controller} akan dimuat setelah proses penyaringan selesai.
+    \item \textit{Controller} akan memuat kelas Model, \textit{library} utama dan kelas bantuan.
+    \item \textit{View} akan memuat tampilan akhir dan dikirim ke \textit{web browser}. Jika \textit{caching} diaktifkan, maka tampilan dimasukan ke dalam \textit{cache} terlebih dahulu sehingga pada permintaan selanjutnya tampilan tersebut dapat diakses lebih cepat.
+\end{enumerate}
 
 \subsection{\textit{Model-View-Controller}}
 \label{sec:Model-View-Controller}
-\textit{Model-View-Controller} (\textit{MVC}) merupakan pola yang digunakan oleh CodeIgniter\footnote{\url{https://www.codeigniter.com/userguide3/overview/mvc.html}} . \textit{MVC} adalah pendekatan perangkat lunak yang memisahkan logika aplikasi dari presentasi. Dalam praktiknya, ini memungkinkan web halaman pengguna berisi skrip yang minimal karena presentasinya terpisah dari skrip PHP. Pengoperasian metode Model View Controller (MVC) memiliki tujuan untuk menumpahkan atau memisahkan bagian kode yang berbeda ke dalam lapisan seperti tampilan, akses data, mengontrol permintaan pengguna dan meneruskan permintaan ke lapisan yang relevan\cite{codeigniter}.  MVC merupakan kumpulan dari tiga bagian: Model, View, dan Controller. 
+CodeIgniter didasarkan pada pola pengembangan Model-View-Controller\cite{codeigniter}. MVC adalah pendekatan perangkat lunak yang memisahkan logika aplikasi dari presentasi. Dalam praktiknya, ini memungkinkan halaman web Anda berisi skrip minimal karena presentasinya terpisah dari skrip PHP.  MVC merupakan kumpulan dari tiga bagian: Model, View, dan Controller. 
 
  \begin{figure}[h!]
      \centering
@@ -37,23 +486,179 @@ Gambar \ref{fig:label} menunjukkan pola dan interaksi dengan pengguna dan aplika
 
 \subsubsection{\textit{Model}}
 \label{sec:Model}
-\textit{Model} bertujuan untuk memberikan penyimpanan permanen data yang digunakan dalam desain keseluruhan \cite{codeigniter}. Hal tersebut mewajibkan model untuk dapat mengakses data untuk dilihat, atau dikumpulkan dan ditulis, dan merupakan jembatan antara komponen View dan komponen Controller. Salah satu aspek penting dari Model adalah bahwa secara teknis "buta". Dengan ini, \textit{Model} tidak memiliki koneksi atau pengetahuan tentang apa yang terjadi pada data ketika diteruskan ke komponen \textit{View} atau \textit{Controller}. \textit{Model}  tidak memanggil atau mencari tanggapan dari bagian lain dari komponen. Tujuan utamanya adalah untuk mengolah data menjadi penyimpanan permanennya, mencari dan menyiapkan data untuk diteruskan ke bagian lain. 
+Model adalah kelas PHP yang dirancang untuk bekerja dengan informasi dalam database\cite{codeigniter}. Berikut adalah contoh tampilan kelas \textit{model}:
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+class Blog_model extends CI_Model {
 
-\textit{Model} tidak dapat dianggap hanya sebagai perangkat database saja, atau pintu gerbang ke sistem lain yang menangani proses data. \textit{Model} mewakili penjaga gerbang ke data itu sendiri, tidak mengajukan pertanyaan tetapi menerima semua permintaan yang datang. Seringkali bagian paling kompleks dari sistem MVC ini, komponen \textit{Model} juga merupakan puncak dari keseluruhan sistem karena tanpanya tidak akan ada koneksi antara \textit{Controller} dan \textit{View} .
+        public $title;
+        public $content;
+        public $date;
 
+        public function get_last_ten_entries()
+        {
+                $query = $this->db->get('entries', 10);
+                return $query->result();
+        }
+
+        public function insert_entry()
+        {
+                $this->title    = $_POST['title']; // please read the below note
+                $this->content  = $_POST['content'];
+                $this->date     = time();
+
+                $this->db->insert('entries', $this);
+        }
+
+        public function update_entry()
+        {
+                $this->title    = $_POST['title'];
+                $this->content  = $_POST['content'];
+                $this->date     = time();
+
+                $this->db->update('entries', $this, array('id' => $_POST['id']));
+        }
+
+}
+    \end{lstlisting}
+    model biasanya akan dimuat dan dipanggil dari dalam \textit{control}. Untuk memuat model, dapat digunakan metode berikut:
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+$this->load->model('model_name');
+    \end{lstlisting}
+    jika model terletak di sub-direktori, sertakan jalur relatif dari direktori model. Misalnya, jika memiliki model yang terletak di application/models/blog/Queries.php, dapat dimuat menggunakan:
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+$this->load->model('blog/queries');
+    \end{lstlisting}
+    Ketika sebuah model dimuat itu tidak terhubung secara otomatis ke database. Berikut merupakan opsi alternatif untuk menghubungkan:
+    \begin{itemize}
+        \item Terhubung menggunakan metode database standar yang dijelaskan pada dokumentasi, baik dari dalam kelas \textit{Controller} atau kelas \textit{Model}.
+        \item Memberi tahu metode pemuatan \textit{model} untuk terhubung secara otomatis dengan meneruskan \textit{TRUE} (boolean) melalui parameter ketiga, dan pengaturan konektivitas, seperti yang ditentukan dalam \textit{file} konfigurasi database yang akan digunakan, berikut cara menuliskannya: 
+        \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+$this->load->model('model_name', '', TRUE);
+    \end{lstlisting}
+    \item melewati pengaturan konektivitas basis data secara manual melalui parameter ketiga:
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+$config['hostname'] = 'localhost';
+$config['username'] = 'myusername';
+$config['password'] = 'mypassword';
+$config['database'] = 'mydatabase';
+$config['dbdriver'] = 'mysqli';
+$config['dbprefix'] = '';
+$config['pconnect'] = FALSE;
+$config['db_debug'] = TRUE;
+
+$this->load->model('model_name', '', $config);
+    \end{lstlisting}
+    \end{itemize}
 \subsubsection{\textit{View}}
 \label{sec:View} 
-View merupakan informasi yang diminta dari \textit{Model} dan ditampilkan kepada pengguna \cite{codeigniter}. Secara tradisional, dalam aplikasi web menggunakan MVC untuk pengembangan, View adalah bagian dari sistem dimana HTML dihasilkan dan ditampilkan. View juga memicu reaksi dari pengguna yang kemudian berinteraksi dengan \textit{controller}. Contoh dasar dari ini adalah tombol yang dihasilkan oleh \textit{view}, yang di klik oleh pengguna dan memicu tindakan pada \textit{controller}. 
+\textit{View} tidak pernah dipanggil secara langsung, \textit{view} harus dimuat oleh \textit{controller}. Dalam kerangka MVC, Controller bertindak sebagai polisi lalu lintas, sehingga bertanggung jawab untuk mengambil tampilan tertentu. berikut merupakan contoh kode program pada file \textit{view}: 
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+<html>
+<head>
+        <title>My Blog</title>
+</head>
+<body>
+        <h1>Welcome to my Blog!</h1>
+</body>
+</html>
+    \end{lstlisting}
+    Untuk memuat file tampilan tertentu, dapat digunakan metode berikut:
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+$this->load->view('name');
+    \end{lstlisting}    
+    Jika lebih dari satu panggilan terjadi \textit{view} akan ditambahkan bersama-sama. Misalnya, ingin dimiliki tampilan header, tampilan menu, tampilan konten, dan tampilan footer. akan terlihat sebagai berikut:
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+<?php
 
-Namun terkadang beberapa orang memiliki konsep yang salah terhadap \textit{View}, terutama oleh pengguna yang mengembangkan web dengan menggunakan pola MVC untuk membangun aplikasi mereka. Sebagai contoh, banyak yang salah mengira bahwa \textit{View} tidak memiliki koneksi apa pun dengan \textit{Model} dan bahwa semua data yang ditampilkan oleh \textit{View} dilewatkan dari \textit{Controller}. Pada kenyataannya, aliran ini mengabaikan teori di balik pola MVC sepenuhnya.Untuk menerapkan arsitektur MVC dengan benar, tidak boleh ada interaksi antara \textit{Model} dengan \textit{View}. Semua logika hanya ditangani oleh \textit{Controller}. Selain itu, deskripsi \textit{View} sebagai file template pun tidak tepat. \textit{View} merupakan sesuatu yang lebih dari sekadar template. Kerangka kerja yang terinspirasi MVC modern telah merusak tampilan hampir ke titik di mana kurangnya  kepedulian apakah kerangka kerja benar-benar mematuhi pola MVC yang benar atau tidak. Penting juga untuk menyebutkan bahwa bagian \textit{View} tidak pernah diberikan data oleh \textit{Controller}. Tidak ada hubungan langsung antara \textit{View} dan \textit{Controller} tanpa \textit{Model} di antara keduanya.  
+class Page extends CI_Controller {
 
+        public function index()
+        {
+                $data['page_title'] = 'Your title';
+                $this->load->view('header');
+                $this->load->view('menu');
+                $this->load->view('content', $data);
+                $this->load->view('footer');
+        }
+
+}
+    \end{lstlisting}    
+    \textit{File} juga dapat disimpan dalam sub-direktori saat melakukannya, harus disertakan nama direktori yang memuat tampilan. Contoh:
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+$this->load->view('directory_name/file_name');
+    \end{lstlisting}  
+\textit{View} juga dapat mengeluarkan tampilan lebih dari satu dengan menggunakan array. Berikut adalah contoh sederhana. Tambahkan ini ke \textit{Controller}:
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+<?php
+class Blog extends CI_Controller {
+
+        public function index()
+        {
+                $data['todo_list'] = array('Clean House', 'Call Mom', 'Run Errands');
+
+                $data['title'] = "My Real Title";
+                $data['heading'] = "My Real Heading";
+
+                $this->load->view('blogview', $data);
+        }
+}
+    \end{lstlisting}  
+    lalu pada \textit{View} buatlah kode seperti ini:
+     \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+<html>
+<head>
+        <title><?php echo $title;?></title>
+</head>
+<body>
+        <h1><?php echo $heading;?></h1>
+
+        <h3>My Todo List</h3>
+
+        <ul>
+        <?php foreach ($todo_list as $item):?>
+
+                <li><?php echo $item;?></li>
+
+        <?php endforeach;?>
+        </ul>
+
+</body>
+</html>
+    \end{lstlisting}    
+    
 \subsubsection{\textit{Controller}}
 \label{sec:Controller} 
-Komponen ketiga dari MVC adalah \textit{Controller}. Tugasnya adalah menangani data yang dikirimkan pengguna serta memperbarui \textit{Model} yang sesuai \cite{codeigniter}. \textit{Controller} dapat disimpulkan sebagai pengumpul informasi, yang kemudian diteruskan ke \textit{Model} untuk diatur penyimpanannya, dan tidak mengandung logika apa pun selain mengumpulkan masukan dari pengguna. \textit{Controller} juga hanya terhubung ke \textit{View} tunggal dan \textit{Model} tunggal, menjadikannya sistem aliran data satu arah, dengan jabat tangan dan tanda tangan di setiap titik pertukaran data. \textit{Controller} hanya diberikan tugas untuk dilakukan saat pengguna sedang berinteraksi dengan \textit{View} dan setiap fungsi \textit{Controller} adalah sebuah pemicu, yang dipicu oleh interaksi antara pengguna dengan \textit{View}. Kesalahan paling umum yang dibuat oleh pengembang adalah menganggap \textit{Controller} sebagai \textit{gateway}, dan akhirnya menetapkan fungsi dan tanggung jawab yang seharusnya dilakukan oleh \textit{View} (ini biasanya merupakan hasil dari pengembang yang sama yang mengacaukan komponen \textit{View} sebagai template). Selain itu, adalah kesalahan umum untuk menetapkan fungsi \textit{Controller} yang memberikan tanggung jawab tunggal untuk mengolah, meneruskan, dan memproses data dari \textit{Model} ke \textit{View}. Meskipun demikian, hubungan pola MVC harus dijaga antara \textit{Model} dan \textit{View}. 
+Komponen ketiga dari MVC adalah \textit{Controller}. Tugasnya adalah menangani data yang dikirimkan pengguna serta memperbarui \textit{Model} yang sesuai \cite{codeigniter}. CodeIgniter dapat diminta untuk memuat \textit{controller} \textit{default} ketika URI tidak ada, seperti halnya ketika hanya URL root situs yang diminta. Untuk menentukan pengontrol default, buka file application/config/routes.php dan atur variabel ini:
+
+     \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+$route['default_controller'] = 'blog';
+    \end{lstlisting} 
+
+'blog' adalah nama kelas \textit{controller} yang ingin digunakan. Jika sekarang dimuat file index.php utama tanpa menentukan segmen URI apa pun, akan terlihat pesan "Hello World" secara default. CodeIgniter memiliki kelas keluaran yang menangani pengiriman data akhir ke \textit{browser web} secara otomatis. Informasi lebih lanjut tentang ini dapat ditemukan di halaman \textit{View} dan kelas \textit{Output}. CodeIgniter mengizinkan penambahan metode bernama \_output() ke \textit{controller} yang akan menerima data keluaran akhir. Contohnya sebagai berikut: 
+
+     \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+public function _output($output)
+{
+        echo $output;
+}
+    \end{lstlisting} 
 
 \section{BASH}
 \label{sec:BASH}
-BASH adalah penerjemah default pada banyak sistem GNU/Linux yang merupakan singkatan dari \textit{Bourne Again SHell}, Bash adalah  shell yang kompatibel yang menggabungkan fitur berguna dari \textit{Korn shell} (ksh) dan \textit{C Shell}(csh)\footnote{\url{https://www.gnu.org/software/bash/}}. BASH menawarkan peningkatan fungsional atas sh untuk pemrograman dan penggunaan interaktif. Selain itu, sebagian besar skrip shell dapat dijalankan oleh Bash tanpa modifikasi. Kelebihan yang dapat diberikan oleh Bash antara lain sebagai berikut
+BASH adalah penerjemah default pada banyak sistem GNU/Linux yang merupakan singkatan dari \textit{Bourne Again SHell}, Bash adalah  shell yang kompatibel yang menggabungkan fitur berguna dari \textit{Korn shell} (ksh) dan \textit{C Shell}(csh)\cite{gnu}. BASH menawarkan peningkatan fungsional atas sh untuk pemrograman dan penggunaan interaktif. Selain itu, sebagian besar skrip shell dapat dijalankan oleh Bash tanpa modifikasi. Kelebihan yang dapat diberikan oleh Bash antara lain sebagai berikut
 \begin{itemize}
     \item Edit pada \textit{command-line}
     \item Riwayat penulisan perintah yang tidak dibatasi
@@ -63,503 +668,42 @@ BASH adalah penerjemah default pada banyak sistem GNU/Linux yang merupakan singk
     \item bilangan integer dari hanya 2 bit sampai 64 bit
 \end{itemize}
 
-\section{SharIF-Judge}
-\label{sec: SharIF-Judge}
-Sharif Judge adalah online judge gratis untuk bahasa pemrograman C, C++, Java dan Python \footnote{\url{https://github.com/mjnaderi/Sharif-Judge}}. Perangkat lunak ini diciptakan oleh Mohammad Javad Naderi pada tahun 2014 dan bersifat open source. Antarmuka Sharif Judge ditulis menggunakan bahasa pemrograman PHP (framework CodeIgniter) dan backend menggunakan BASH.
-erikut ini merupakan fitur-fitur yang dimiliki oleh Sharif Judge antara lain yaitu:
-\begin{itemize}
-    \item {\textit{Multiple Role}}\newline
-        Pada SharIF-Judge, \textit{User} memiliki 4 jenis \textit{role} yang dibedakan berdasarkan level, dimana level tersebut digunakan untuk memisahkan aksi yang dapat dilakukan setiap \textit{role}. 4 \textit{role} tersebut adalah \textit{Admin}, \textit{Head Instructor}, \textit{Instructor}, dan \textit{Student}. 
-        
-    \begin{table}[H] %atau h saja untuk "kira kira di sini"
-	    \centering 
-	    \caption{Tabel \textit{role}}
-	    \label{tab:level}
-	    \begin{tabular}{|c|c|}
-		    \hline
-		    \textit{Role} & Level \\
-		    \hline
-		    \textit{Admin} & 3 \\
-		    \hline
-		    \textit{Head Instructor} & 2 \\
-		    \hline
-		    \textit{Instructor} & 1 \\
-		    \hline
-		    \textit{Student} & 0 \\
-		    \hline
-	    \end{tabular} 
-    \end{table}
-    
-        Pada Tabel \ref{tab:level} menunjukan level role yang ada pada SharIF-Judge. Setiap \textit{role} tersebut, dapat melakukan aksi yang berbeda-beda yang disesuaikan dengan level role. Untuk melihat aksi apa saja yang dapat dilakukan setiap \textit{role} dapat dilihat pada Tabel \ref{tab:aksi}.
-    \begin{table}[H]
-	    \centering 
-	    \caption{Tabel \textit{Action}}
-	    \label{tab:aksi}
-	    \begin{tabular}{|c|c|c|c|c|}
-		    \hline
-		    \textit{Action} & \textit{Admin} & \textit{Head Instructor} & \textit{Instructor} & \textit{Student} \\
-		    \hline
-		    Mengubah \textit{Setting} & O & X & X & X \\
-		    \hline
-		    Menambah/Menghapus \textit{User} & O & X & X & X \\
-		    \hline
-		    Mengubah \textit{role users} & O & X & X & X \\
-		    \hline
-		    Menambah/Menghapus/Mengubah \textit{Assignment} & O & O & X & X \\
-		    \hline
-		    Mengunduh \textit{Test} & O & O & X & X \\
-		    \hline
-		    Menambah/Menghapus/Mengubah Notifikasi & O & O & X & X \\
-		    \hline
-		    Rejudge & O & O & X & X \\
-		    \hline
-		    Melihat/Pause/Melanjutkan/Submission Queue & O & O & X & X \\
-		    \hline
-		    Mendeteksi Kode yang Mirip  & O & O & X & X \\
-		    \hline
-		    Melihat Semua Kode  & O & O & O & X \\
-		    \hline
-		    Mengunduh Kode Final  & O & O & O & X \\
-		    \hline
-		    Memilih \textit{Assignment}   & O & O & O & O \\
-		    \hline
-		    Submit  & O & O & O & O \\
-		    \hline
-	    \end{tabular} 
-    \end{table}
-        Pengguna dapat menambahkan \textit{user} dengan menggunakan fitur \textit{Add User} pada halaman \textit{User}, Pengguna harus mengisi semua informasi yang ada pada text area. Baris dimulai dengan komentar
-\#. Setiap baris lainnya mewakili pengguna dengan sintaks berikut:
-\hspace{-10mm}
+\section{Node.js}
+\label{sec: Node.js}
+Node.js adalah lingkungan runtime JavaScript \textit{open-source} dan lintas platform\cite{nodejs}. Ini adalah alat yang populer untuk hampir semua jenis proyek Node.js menjalankan \textit{engine} JavaScript V8, inti dari Google Chrome, di luar browser. Ini memungkinkan Node.js menjadi sangat berkinerja.
 
-    \begin{verbatim}
-USERNAME EMAIL PASSWORD ROLE
-        
-- Username dapat berisikan huruf kecil atau nomor dan harus terdiri antara 3 
-  sampai 20 karakter.
-- Password harus terdiri antara 6 sampai 30 karakter.
-- Pengguna dapat menggunakan RANDOM[n] untuk menghasilkan password acak yang
-  terdiri dari n-digit karakter.
-- ROLE harus terdiri dari salah satu yang disebutkan sebagai berikut:‘admin‘,
-  ‘head_instructor‘, ‘instructor‘, dan ‘student‘
-    \end{verbatim}
-    \vspace{-4mm}
-    Berikut ini adalah contoh penggunaan sintaks untuk \textit{add user}:
-    \begin{verbatim}
-# This is a comment!
-# This is another comment!
-instructor instructor@sharifjudge.ir 123456 head_instructor
-instructor2 instructor2@sharifjudge.ir random[7] instructor
-student1 st1@sharifjudge.ir random[6] student
-student2 st2@sharifjudge.ir random[6] student
-student3 st3@sharifjudge.ir random[6] student
-student4 st4@sharifjudge.ir random[6] student
-student5 st5@sharifjudge.ir random[6] student
-student6 st6@sharifjudge.ir random[6] student
-student7 st7@sharifjudge.ir random[6] student
-    \end{verbatim}
-    \vspace{-5mm}
-    \item \textit{Sandboxing}\newline
-        \textit{Sandboxing} adalah sebuah mekanisme dimana sebuah aplikasi yang dikirimkan oleh pengguna, dapat dijalankan dalam lingkungan virtual yang aman dan menghindari adanya serangan keluar dari Sharif Judge. \\
-    \item \textit{Cheat Detection}
-    
-    \textit{Cheat Detection} berguna sebagai pendeteksi adanya kode yang mirip dan sebagai pendeteksi kecurangan. Untuk pengecekan digunakan MOSS(\textit{Measure Of Software Similarity}) Moss adalah perangkat lunak yang digunakan oleh guru dan penerbit untuk menemukan plagiarisme perangkat lunak. Perangkat lunak ini dikembangkan oleh Stanford, dan telah menjadi alat utama untuk memeriksa plagiarisme kode. MOSS diciptakan untuk menghentikan kelaziman pada siswa untuk menyalin kode dan langsung selesai tanpa adanya pengertian dari siswa terhadap pelajaran tersebut\footnote{\url{https://codequiry.com/moss/measure-of-software-similarity}}. \\
-    \item Penilaian berbeda untuk keterlambatan pengumpulan
-    
-    Hal ini berguna agar jika pelajar ada yang membutuhkan pengertian khusus dan memiliki alasan yang baik, pengajar dapat memberikan pengecualian dan memberikan hukuman ringan.\\
-    \item Antrian pengiriman \newline
-    Hal ini berguna agar Sharif Judge tidak \textit{down} akibat banyaknya pengiriman.\\
-    
-    \item Mengunduh nilai dalam bentuk \textit{excel}\newline
-    Hal ini berguna agar pengajar tidak mendapatkan kesulitan untuk menyimpan data nilai pelajar.\\
-    
-    \item Mengunduh kode yang dikumpulkan dalam bentuk zip \newline
-    Hal ini berguna agar ketika kode yang harus dikumpulkan ada banyak dan ketika pengajar ingin memeriksa, file tersedia dengan rapih. \\
-    
-    \item Metode "Output Comparison" dan "Tester Code" untuk memeriksa \textit{output}. \newline
-    Hal ini berguna agar pelajar mengetahui apakah pekerjaan yang dikirimkan tersebut sudah benar atau masih kurang tepat. \\
-    
-    \item Penilaian ulang \newline
-    Hal ini berguna agar ketika pengajar melakukan kesalahan penilaian, pengajar dapat melakukan edit. \\
-    \item Papan nilai\newline
-    Hal ini berguna agar pelajar dapat melihat nilai dari pelajar-pelajar yang lain dan bisa menjadi motivasi bagi pelajar tersebut. \\
-    \item Notifikasi \newline
-    hal ini berguna agar ketika ada tugas yang harus dikumpulkan, pelajar mengetahuinya dan tidak terlewat.
-\end{itemize}
+Aplikasi Node.js berjalan dalam satu proses, tanpa membuat thread baru untuk setiap permintaan.
+Saat Node.js melakukan operasi \textit{Input}/\textit{Output} (I/O), seperti membaca dari jaringan, mengakses database atau sistem file, alih-alih memblokir \textit{thread} dan membuang siklus CPU menunggu, Node.js akan melanjutkan operasi saat respons kembali.
 
-\subsection{Instalasi}
-\label{sec:Instalasi}
-Untuk dapat menjalankan Sharif Judge, diwajibkan untuk memiliki server Linux dan mengikuti tahapan sebagai berikut\footnote{\url{https://github.com/mjnaderi/Sharif-Judge}\label{github}}:
-\begin{itemize}
-    \item Menjalankan PHP versi 5.3 atau versi yang lebih baru.
-    \item Pengguna dapat menjalankan PHP dari command line  dan pengguna perlu menginstall paket PHP CLI.
-    \item Memiliki \textit{Mysql} atau \textit{PostgreSql databse}.
-    \item PHP memiliki akses untuk menjalankan perintah \textit{shell} terutama untuk fungsi \textit{shell\_exec}. contohnya seperti \textit{command} di bawah ini: 
-    \vspace{-2mm}
-    \begin{verbatim}
-        echo shell_exec(``php -v'');
-    \end{verbatim}
-    \vspace{-5mm}
-    \item Untuk melakukan proses kompilasi dan menjalankan kode yang dikumpulkan adalah (\textit{gcc, g++, javac, java, python2, python3 commands})
-    \item Disarankan untuk melakukan instalasi \textit{Perl} dengan alasan agar memiliki ketepatan waktu, penggunaan \textit{memory} yang terbatas dan memaksimalkan batas ukuran pada \textit{output} kode yang dikirimkan.
-\end{itemize}
-Jika persyaratan diatas telah selesai dilakukan, dapat melakukan instalasi sebagai berikut: 
-\begin{itemize}
-    \item Mengunduh versi terakhir dari Sharif Judge dan unpack file yang berhasil diunduh, letakan pada direktori html publik
-    \item Untuk mempermudah pindahkan folder \textit{system}  dan \textit{application} keluar dari direktori publik dan masukan \textit{path} lengkap pada file index.php
-    \vspace{-2mm}
-    \begin{verbatim}
-        $system_path = `/home/mohammad/secret/system`;
-        $application_folder = `/home/mohammad/secret/application`;
-    \end{verbatim}
-    \vspace{-5mm}
-    \item Membuat sebuah \textit{Mysql} atau \textit{PostgreSql database} untuk Sharif Judge.
-    \item Mengatur koneksi database di file application/config/database.php.
-    \vspace{-2mm}
-    \begin{verbatim}
-/* Enter database connection settings here: */
-’dbdriver’ => ’postgre’, // database driver (mysqli, postgre)
-’hostname’ => ’localhost’, // database host
-’username’ => ‘, // database username
-’password’ => ‘, // database password
-’database’ => ‘, // database name
-’dbprefix’ => ’shj_’, // table prefix
-/**********************************************/
-    \end{verbatim}
-    \vspace{-5mm}
-    \item Membuat direktori application/cache/Twig agar dapat ditulis oleh PHP
-    \item Membuka halaman utama Sharif Judge pada web browser \item \textit{Log in}  menggunakan akun \textit{admin}
-    \item Memindahkan folder \textit{tester} dan \textit{assigments} di luar direktori publik lalu simpan \textit{path} lengkap pada halaman \textit{Settings} . Dua folder tersebut harus dapat ditulis oleh PHP. File-file yang diunggah akan disimpan di folder \textit{assigments} sehingga tidak dapat diakses publik.
-\end{itemize}
+Hal ini memungkinkan Node.js untuk menangani ribuan koneksi bersamaan dengan satu server tanpa menimbulkan beban mengelola konkurensi \textit{thread}, yang dapat menjadi sumber \textit{bug} yang signifikan.
 
-\subsection{\textit{Add Assignment}}
-Pengguna dapat menambahkan \textit{assignment} dengan cara mengklik menu \textit{Assignments} lalu klik \textit{add} pada halaman tersebut\footref{github}. Pada Gambar \ref{fig:addAssignment} merupakan halaman \textit{add assignment}.
- \begin{figure}[h!]
-     \centering
-     \includegraphics[width=1\linewidth]{Gambar/Add Assignment.PNG}
-     \caption{Halaman \textit{Assignment}}
-     \label{fig:addAssignment}
- \end{figure}
-Berikut ini merupakan pengaturan yang terdapat pada \textit{add assignment}: 
-\begin{itemize}
-    \item \textit{Assignment Name}\newline
-    Memberikan nama pada \textit{assignment} yang akan dibuat \\
-    \item \textit{Start Time}\newline
-    Menentukan dimulainya waktu dari \textit{assignment} tersebut dan peserta tidak dapat mengumpulkan \textit{assignment} tersebut lebih cepat dari \textit{start time}. Format yang digunakan untuk \textit{start time} adalah \textit{MM/DD/YYYY HH:MM:SS}. Contoh penulisannya adalah 08/31/2013 12:00:00 \\
-    \item \textit{Finish Time and Extra Time}\newline
-    Peserta tidak dapat melakukan aksi \textit{submit} setelah \textit{Finish time + Extra time}. \textit{Assignment} yang telat akan dikalikan dengan koefisien yang sudah ditentukan. Pengguna harus menulis \textit{script} dalam bahasa PHP untuk menghitung koefisien pada bidang "\textit{Coefficient Rule}". Format yang digunakan dalam pengaturan \textit{finish time} adalah \textit{MM/DD/YYYY HH:MM:SS}. Contoh penulisannya adalah 08/31/2013 23:59:59. "Extra Time" akan terhitung dalam satuan menit. Pengguna juga dapat menggunakan operator aritmatika seperti *, -, +, /. Contoh 120 (2 jam) atau 48*60 (2 hari).\\
-    \item \textit{Participants} \newline
-    Pengaturan ini berfungsi untuk membatasi peserta yang dapat mengumpulkan assignment. Pengguna dapat menggunakan kata kunci \textit{ALL} pada kolom \textit{Participants} untuk mengijinkan seluruh peserta agar dapat mengumpulkan \textit{assignment}. Untuk membatasi peserta tertentu, pengguna dapat memasukan username peserta pada kolom \textit{Participants}. Setiap username dapat dipisahkan menggunakan tanda koma. Contoh: admin, instructor1, instructor2, student1.\\
-    \item \textit{Tests}\newline
-    Pengguna dapat mengirim tes kasus dalam \textit{file} zip dengan syarat saat menambahkan tugas, Pengguna harus menyediakan file zip yang berisi kasus uji. File zip ini harus berisi folder untuk setiap masalah (masalah Upload-Only tidak memerlukan folder apa pun). Nama folder harus p1, p2, p3, \ldots Metode yang dapat digunakan untuk memeriksa keluaran setiap masalah adalah dengan metode “Perbandingan \textit{Input/Output}” dan metode “\textit{Tester}”.
-    \begin{itemize}
-        \item Perbandingan \textit{Input/Output} \newline
-        Dalam metode ini, Pengguna harus meletakkan beberapa file \textit{input} dan \textit{output} di folder masalah. SharIF-Judge memberikan setiap file input tes ke kode pengguna dan membandingkan output pengguna dengan output tes. File input harus di folder in dengan nama input1.txt, input2.txt, \ldots dan file output harus di folder out dengan nama output1.txt, output2.txt, \ldots
-        \item \textit{Tester}\newline
-        Dalam metode ini, Pengguna harus menyediakan beberapa file pengujian input dan file C++ (tester.cpp) dan (opsional) beberapa file pengujian output. SharIF-Judge memberikan file tes input ke kode pengguna dan mendapatkan output pengguna. Kemudian tester.cpp mendapatkan input tes, output tes, dan output pengguna. Jika output pengguna benar, mengembalikan 0, jika tidak mengembalikan 1.
-        Pengguna dapat menggunakan template kode ini untuk menulis tester.cpp: 
-        \begin{verbatim}
-/*
- * tester.cpp
- */
- 
-#include <iostream>
-#include <fstream>
-#include <string>
-using namespace std;
-int main(int argc, char const *argv[])
-{
- 
-	ifstream test_in(argv[1]);  /* This stream reads from test's input file  */
-	ifstream test_out(argv[2]); /* This stream reads from test's output file */
-	ifstream user_out(argv[3]); /* This stream reads from user's output file */
- 
-	/* Your code here */
-	/* If user's output is correct, return 0, otherwise return 1       */
- 
-	...
- 
-}
-        \end{verbatim}
-        Diberikan contoh dari file tes kasus dengan struktur file sebagai berikut:
-        \begin{verbatim}
-.
-|-- p1
-|   |-- in
-|   |   |-- input1.txt
-|   |   |-- input2.txt
-|   |   |-- input3.txt
-|   |   |-- input4.txt
-|   |   |-- input5.txt
-|   |   |-- input6.txt
-|   |   |-- input7.txt
-|   |   |-- input8.txt
-|   |   |-- input9.txt
-|   |   |-- input10.txt
-|   |-- out
-|   |   |-- output1.txt
-|   |-- tester.cpp
-|-- p2
-    |-- in
-    |   |-- input1.txt
-    |   |-- input2.txt
-    |   |-- input3.txt
-    |   |-- input4.txt
-    |   |-- input5.txt
-    |   |-- input6.txt
-    |   |-- input7.txt
-    |   |-- input8.txt
-    |   |-- input9.txt
-    |   |-- input10.txt
-    |-- out
-        |-- output1.txt
-        |-- output2.txt
-        |-- output3.txt
-        |-- output4.txt
-        |-- output5.txt
-        |-- output6.txt
-        |-- output7.txt
-        |-- output8.txt
-        |-- output9.txt
-        |-- output10.txt   
-        \end{verbatim}
-    \end{itemize}
-        \item \textit{Open} \newline
-        Pengguna dapat membuka atau menutup \textit{assignment} menggunakan pilihan ini. Jika pengguna menutup \textit{assignment}, \textit{non-student users} masih dapat mengumpulkan \textit{assignment}. \\
-        \item \textit{Scoreboard} \newline
-        Pengguna dapat mengaktifkan atau mematikan papan nilai dengan menggunakan pilihan ini.
-        \item \textit{Java Exceptions} \newline
-        Pengguna dapat mengaktifkan dan mematikan java exceptions yang ditunjukan kepada \textit{role students}. Perubahan pada pilihan ini tidak berdampak pada kode yang sebelumnya sudah dinilai. Nama \textit{exception} akan muncul ketika pada file pathtester/java\_exceptions\_list berisikan nama \textit{exception} tersebut. Berikut hasil exception yang ditunjukan jika pengguna mengaktifkan pengaturan \textit{Java Exceptions}:
-        \begin{verbatim}
-Test 1
-ACCEPT
-Test 2
-Runtime Error (java.lang.ArrayIndexOutOfBoundsException)
-Test 3
-Runtime Error (java.lang.ArrayIndexOutOfBoundsException)
-Test 4
-ACCEPT
-Test 5
-ACCEPT
-Test 6
-ACCEPT
-Test 7
-ACCEPT
-Test 8
-Runtime Error (java.lang.ArrayIndexOutOfBoundsException)
-Test 9
-Runtime Error (java.lang.StackOverflowError)
-Test 10
-Runtime Error (java.lang.ArrayIndexOutOfBoundsException)
-        \end{verbatim}
-        \item \textit{Coefficient Rule} \newline
-        Pengguna dapat menulis skrip PHP di sini yang menghitung koefisien dikalikan dengan skor. Skrip pengguna harus memasukkan koefisien (dari 100) ke dalam variabel \$koefisien. Pengguna dapat menggunakan variabel \$extra\_time dan \$delay. \$extra\_time adalah total waktu tambahan yang diberikan kepada pengguna dalam detik (waktu tambahan yang Anda masukkan di bidang Extra Time) dan \$delay adalah jumlah detik yang berlalu dari waktu selesai (bisa negatif). Skrip PHP ini tidak boleh mengandung tag <?php , <? , ?>. Dalam contoh ini, \$extra\_time adalah 172800 (2 hari): 
-        \begin{verbatim}
-if ($delay<=0)
-  // no delay
-  $coefficient = 100;
+Di Node.js, standar ECMAScript baru dapat digunakan tanpa masalah, karena tidak perlu menunggu semua pengguna memperbarui browser user dan bertanggung jawab untuk memutuskan versi ECMAScript mana yang akan digunakan dengan mengubah versi Node.js, dan juga dapat mengaktifkan fitur eksperimental tertentu dengan menjalankan Node.js dengan \textit{flag}.
 
-elseif ($delay<=3600)
-  // delay less than 1 hour
-  $coefficient = ceil(100-((30*$delay)/3600));
+\subsection{\textit{Twig}}
+Pada perangkat lunak SharIF-Judge, kelas \textit{view} menggunakan \textit{framework} aplikasi yaitu \textit{Twig}. \textit{Twig} merupakan sebuah \textit{template engine modern} untuk PHP\cite{twig}. Sebuah \textit{template} \textit{Twig} dapat mengandung variables atau \textit{expression} dan \textit{tags}. \textit{Variables} atau \textit{expression} akan diubah pada saat \textit{template} \textit{Twig} dievaluasi dan \textit{tags} yang akan mengontrol logika dari \textit{template} tersebut. Berikut merupakan \textit{template} kode yang menunjukan beberapa hal mendasar.
 
-elseif ($delay<=86400)
-  // delay more than 1 hour and less than 1 day
-  $coefficient = 70;
+ \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Webpage</title>
+    </head>
+    <body>
+        <ul id="navigation">
+        {% for item in navigation %}
+        <li><a href="{{ item.href }}">{{ item.caption }}</a></li>
+        {% endfor %}
+        </ul>
+        <h1>My Webpage</h1>
+        {{ a_variable }}
+    </body>
+</html>
+    \end{lstlisting}
 
-elseif (($delay-86400)<=3600)
-  // delay less than 1 hour in second day
-  $coefficient = ceil(70-((20*($delay-86400))/3600));
-
-elseif (($delay-86400)<=86400)
-  // delay more than 1 hour in second day
-  $coefficient = 50;
-
-elseif ($delay > $extra_time)
-  // too late
-  $coefficient = 0;
-        \end{verbatim}
-    \item \textit{Time Limit} \newline
-    Pengguna dapat mengatur batas waktu dalam menjalankan kode dalam satuan milisekon. Program yang ditulis menggunakan Python dan Java biasanya lebih lambat dari C/C++. Oleh karena itu Python dan Java membutuhkan waktu yang lebih lama. \\
-    \item \textit{Memory Limit} \newline
-    Pengguna dapat mengatur batas memori dalam satuan kilobyte, namun penggunaan \textit{Memory Limit} tidak terlalu akurat.\\
-    \item \textit{Allowed Languages} \newline
-    Melakukan pengaturan bahasa untuk setiap kasus yang dipisahkan menggunakan koma. Bahasa yang tersedia seperti C, C++, Java, Python 2, Python 3, zip, PDF. Pengguna dapat menggunakan zip atau PDF jika mengaktifkan pilihan Upload Only. Contoh: C, C++ , zip atau Python 2,Python 3 atau Java ,C. \\
-    \item \textit{Diff Command} \newline
-    \textit{Command} ini digunakan untuk membandingkan keluaran dengan keluaran yang benar. Secara default SharIF-Judge menggunakan \textit{diff}, namun pengguna dapat mengubah \textit{command} pada bagian ini. \\
-    \item \textit{Diff Arguments} \newline
-    Pengguna dapat mengatur argumen dari \textit{Diff Command} disini. Untuk melihat daftar lengkap \textit{diff argumen}, pengguna dapat melihat \textit{man diff}. SharIF-Judge menambahkan dua pilihan baru yaitu \textit{ignore} dan \textit{identical}. \textit{Ignore} akan menghiraukan semua baris baru dan spasi. \textit{Identical} tidak akan menghiraukan apapun namun keluaran dari file yang dikumpulkan harus identik dengan keluaran test case agar dapat diterima. \\
-    \item \textit{Upload Only} \newline
-    Jika pengguna mengatur problem sebagai \textit{Upload-Only}, maka SharIF-Judge tidak akan menilai \textit{assignment} pada kasus tersebut. Pengguna dapat menggunakan zip dan PDF pada \textit{allowed languages} jika mengaktifkan pilihan ini.
-\end{itemize}
-\newpage
-Perhatikan bawa berbeda dengan penempatan judul gambar gambar, keterangan tabel harus diletakkan di atas tabel!!
-Lihat Tabel~\ref{tab:contoh1} berikut ini:
-
-\begin{table}[H] %atau h saja untuk "kira kira di sini"
-	\centering 
-	\caption{Tabel contoh}
-	\label{tab:contoh1}
-	\begin{tabular}{cccc}
-		\toprule
-		& $v_{start}$ & $\mathcal{S}_{1}$ & $v_{end}$\\
-
-		\midrule
-		$\tau_{1}$ & 1 & 12& 20\\
-		$\tau_{2}$ & 1 &  & 20\\
-		$\tau_{3}$ & 1 & 9 & 20\\
-		$\tau_{4}$ & 1 &  & 20\\
-
-		\bottomrule
-		
-	\end{tabular} 
-\end{table}
-Tabel~\ref{tab:cthwarna1} dan Tabel~\ref{tab:cthwarna2} berikut ini adalah tabel dengan sel yang berwarna dan ada dua tabel yang bersebelahan. 
-\begin{table}[H]
-	\begin{minipage}[c]{0.49\linewidth}
-		\centering
-		\caption{Tabel bewarna(1)}
-		\label{tab:cthwarna1}
-		\begin{tabular}{ccccc}
-			\toprule
-			 & $v_{start}$ & $\mathcal{S}_{2}$ & $\mathcal{S}_{1}$ & $v_{end}$\\
-			
-			\midrule
-			$\tau_{1}$ & 1 & 5 \cellcolor{green}& 12& 20\\
-			$\tau_{2}$ & 1 & 8 \cellcolor{green}& & 20\\
-			$\tau_{3}$ & 1 & 2/8/17 \cellcolor{green}& 9 & 20\\
-			$\tau_{4}$ & 1 & \cellcolor{red}& & 20\\
-			
-			\bottomrule
-
-		\end{tabular}
-	\end{minipage}
-	\begin{minipage}[c]{0.49\linewidth}
-		
-		\centering 
-		\caption{Tabel bewarna(2)}
-		\label{tab:cthwarna2}
-		\begin{tabular}{ccccc}
-			\toprule
-			 & $v_{start}$ & $\mathcal{S}_{1}$ & $\mathcal{S}_{2}$ & $v_{end}$\\
-			
-			\midrule
-			$\tau_{1}$ & 1 & 12& 5 \cellcolor{red} &20\\
-			$\tau_{2}$ & 1 &  &  8 \cellcolor{green} &20\\
-			$\tau_{3}$ & 1 & 9 & 2/8/17 \cellcolor{green} &20\\
-			$\tau_{4}$ & 1 &   & \cellcolor{red} &20\\
-			
-			\bottomrule
-		
-		\end{tabular}
-	\end{minipage}
-\end{table}
-
- 
-\subsection{Kutipan}
-\label{subs:kutipan} 
-Berikut contoh kutipan dari berbagai sumber, untuk keterangan lebih lengkap, silahkan membaca file referensi.bib yang disediakan juga di template ini.
-Contoh kutipan:
-\begin{itemize}
-	\item Buku:~\cite{berg:08:compgeom} 
-	\item Bab dalam buku:~\cite{kreveld:04:GIS}
-	\item Artikel dari Jurnal:~\cite{buchin:13:median}
-	\item Artikel dari prosiding seminar/konferensi:~\cite{kreveld:11:median}
-	\item Skripsi/Thesis/Disertasi:~\cite{lionov:02:animasi}~\cite{wiratma:10:following}~\cite{wiratma:22:later}
-	\item Technical/Scientific Report:~\cite{kreveld:07:watertight}
-	\item RFC (Request For Comments):~\cite{RFC1654}
-	\item Technical Documentation/Technical Manual:~\cite{Z.500}~\cite{unicode:16:stdv9}~\cite{google:16:and7}
-	\item Paten:~\cite{webb:12:comm}
-	\item Tidak dipublikasikan:~\cite{wiratma:09:median}~\cite{lionov:11:cpoly}
-	\item Laman web:~\cite{erickson:03:cgmodel}  
-	\item Lain-lain:~\cite{agung:12:tango}
-\end{itemize}    
-  
-\subsection{Gambar}
-
-Pada hampir semua editor, penempatan gambar di dalam dokumen \LaTeX{} tidak dapat dilakukan melalui proses {\it drag and drop}.
-Perhatikan contoh pada file bab2.tex untuk melihat bagaimana cara menempatkan gambar.
-Beberapa hal yang harus diperhatikan pada saat menempatkan gambar:
-\begin{itemize}
-	\item Setiap gambar {\bf harus} diacu di dalam teks (gunakan {\it field} {\sc label})
-	\item {\it Field} {\sc caption} digunakan untuk teks pengantar pada gambar. Terdapat dua bagian yaitu yang ada di antara tanda $[$ dan $]$ dan yang ada di antara tanda $\{$ dan $\}$. Yang pertama akan muncul di Daftar Gambar, sedangkan yang kedua akan muncul di teks pengantar gambar. Untuk skripsi ini, samakan isi keduanya.
-	\item Jenis file yang dapat digunakan sebagai gambar cukup banyak, tetapi yang paling populer adalah tipe {\sc png} (lihat Gambar~\ref{fig:ularpng}), tipe {\sc jpg} (Gambar~\ref{fig:ularjpg}) dan tipe {\sc pdf} (Gambar~\ref{fig:ularpdf})
-	\item Besarnya gambar dapat diatur dengan {\it field} {\sc scale}.
-	\item Penempatan gambar diatur menggunakan {\it placement specifier} (di antara tanda  $[$ dan $]$ setelah deklarasi gambar.
-	Yang umum digunakan adalah {\bf H} untuk menempatkan gambar {\bf sesuai} penempatannya di file .tex atau  {\bf h} yang berarti "kira-kira" di sini. \\
-	Jika tidak menggunakan {\it placement specifier}, \LaTeX{} akan menempatkan gambar secara otomatis untuk menghindari bagian kosong pada dokumen anda.
-	Walaupun cara ini sangat mudah, hindarkan terjadinya penempatan dua gambar secara berurutan. 	
-	\begin{itemize}
-		\item Gambar~\ref{fig:ularpng} ditempatkan di bagian atas halaman, walaupun penempatannya dilakukan setelah penulisan 3 paragraf setelah penjelasan ini.
-		\item Gambar~\ref{fig:ularjpg} dengan skala 0.5 ditempatkan di antara dua buah paragraf. Perhatikan penulisannya di dalam file bab2.tex!
-		\item Gambar~\ref{fig:ularpdf} ditempatkan menggunakan {\it specifier} {\bf h}.
-	\end{itemize}
-\end{itemize}
- 
-\dtext{17-18}
-\begin{figure} 
-	\centering  
-	\includegraphics[scale=1]{ular-png}  
-	\caption[Gambar {\it Serpentes} dalam format png]{Gambar {\it Serpentes} dalam format png} 
-	\label{fig:ularpng} 
-\end{figure} 
-
-\dtext{19-20}
-\begin{figure}[H]
-	\centering  
-	\includegraphics[scale=0.5]{ular-jpg}  
-	\caption[Ular kecil]{Ular kecil} 
-	\label{fig:ularjpg} 
-\end{figure} 
-\dtext{21-22}
-
-\begin{figure}[ht] 
-	\centering  
-	\includegraphics[scale=1]{ular-pdf}  
-	\caption[ {\it Serpentes} betina]{ {\it Serpentes} jantan} 
-	\label{fig:ularpdf} 
-\end{figure} 
- 
-\subsection{Kode Program}
-
-Kode program dalam bahasa tertentu seringkali harus ditulis di dalam bab, bukan hanya dilampirkan di bagian Lampiran. 
-Kode~\ref{kode:aneh} menampilkan penggunaan karakter-karakter yang umum digunakan dalam sebuah program yang ditulis dengan bahasa C.
+Ada dua jenis delimiters pada kode di atas, yaitu {\% ... \%} dan {{ ... }}. \textit{Delimiters} {\% ... \%} digunakan untuk mengeksekusi sebuah \textit{statements}. Pada kode di atas, \textit{delimiters} {\% for item in navigation \%} akan mengeksekusi \textit{statements for-loops} atau pengulangan. \textit{Delimiters} {{ ... }} digunakan untuk menampilkan nilai. Pada kode di atas, \textit{delimiters} {{ item.href }} akan menampilkan nilai item.href, \textit{delimiters} {{ item.caption }} akan menampilkan nilai item.caption dan \textit{delimiters} {{ a\_variable }} akan menampilkan nilai a\_variable.
 
 
-\begin{lstlisting}[language=Java, caption=Kode untuk menampilkan karakter-karakter aneh, label=kode:aneh]
-// This does not make algorithmic sense, 
-// but it shows off significant programming characters.
 
-#include<stdio.h>
 
-void myFunction( int input, float* output ) {
-	switch ( array[i] ) {
-		case 1: // This is silly code
-			if ( a >= 0 || b <= 3 && c != x )
-				*output += 0.005 + 20050;
-			char = 'g';
-			b = 2^n + ~right_size - leftSize * MAX_SIZE;
-			c = (--aaa + &daa) / (bbb++ - ccc % 2 );
-			strcpy(a,"hello $@?"); 
-	}
-	count = ~mask | 0x00FF00AA;
-}
-
-// Fonts for Displaying Program Code in LATEX
-// Adrian P. Robson, nepsweb.co.uk
-// 8 October 2012
-// http://nepsweb.co.uk/docs/progfonts.pdf
-
-\end{lstlisting}
-
-\subsection{Notasi}
-
-Simbol-simbol (matematika) yang sering digunakan sepanjang penulisan skripsi, dapat dimasukkan ke dalam ``Daftar Notasi''. Daftar ini ada di halaman depan sebelum Bab~\ref{chap:intro}.
-Cara memasukkan sebuah simbol ke dalam Daftar Notasi adalah menggunakan perintah \verb|\nomenclature|. Contoh:
-\begin{center}
-    \verb|\nomenclature[]{$A$}{luas kandang ular}|    
-\end{center}
-\nomenclature[]{$A$}{luas kandang ular}
-\nomenclature[]{$n$}{banyaknya ular}
-\nomenclature[]{$k$}{jumlah kepala per seekor ular\nomrefpage}
-Argumen opsional digunakan untuk mengurutkan notasi. Silahkan lihat sendiri dokumentasi package \verb|nomencl|
-
+%https://codeigniter.com/userguide3/general/requirements.html
