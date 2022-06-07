@@ -2,8 +2,8 @@
 \label{chap:analisis}
 Bab ini membahas tentang analisis dari SharIF-Judge yang digunakan oleh Teknik Informatika. SharIF-Judge memiliki fungsi utama yaitu untuk mengevaluasi kode program yang telah dikumpulkan oleh pengguna secara otomatis. SharIF-Judge digunakan pada beberapa matak kuliah pemrograman Teknik Informatika Unpar untuk mempermudah evaluasi yang akan dilakukan oleh pengajar.
 
-\section{SharIF-Judge}
-\label{sec: SharIF-Judge}
+\section{Analisis Sistem Kini}
+\label{sec: Analisis Sistem Kini}
 Sharif Judge adalah online judge gratis untuk bahasa pemrograman C, C++, Java dan Python \cite{sharif_judge}. Perangkat lunak ini diciptakan oleh Mohammad Javad Naderi pada tahun 2014 dan bersifat open source. Antarmuka Sharif Judge ditulis menggunakan bahasa pemrograman PHP (framework CodeIgniter) dan backend menggunakan BASH.
 erikut ini merupakan fitur-fitur yang dimiliki oleh Sharif Judge antara lain yaitu:
 \begin{itemize}
@@ -126,7 +126,7 @@ student7 st7@sharifjudge.ir random[6] student
 
 \subsection{Instalasi}
 \label{sec:Instalasi}
-Untuk dapat menjalankan Sharif Judge, diwajibkan untuk memiliki server Linux dan mengikuti tahapan sebagai berikut\footnote{\url{https://github.com/mjnaderi/Sharif-Judge}\label{github}}:
+Untuk dapat menjalankan Sharif Judge, diwajibkan untuk memiliki server Linux dan mengikuti tahapan sebagai berikut:
 \begin{itemize}
     \item Menjalankan PHP versi 5.3 atau versi yang lebih baru.
     \item Pengguna dapat menjalankan PHP dari command line  dan pengguna perlu menginstall paket PHP CLI.
@@ -175,10 +175,10 @@ Jika persyaratan diatas telah selesai dilakukan, dapat melakukan instalasi sebag
 
 \subsection{\textit{Add Assignment}}
 \label{sec: Add Assignment}
-Pengguna dapat menambahkan \textit{assignment} dengan cara mengklik menu \textit{Assignments} lalu klik \textit{add} pada halaman tersebut\footref{github}. Pada Gambar \ref{fig:addAssignment} merupakan halaman \textit{add assignment}.
+Pengguna dapat menambahkan \textit{assignment} dengan cara mengklik menu \textit{Assignments} lalu klik \textit{add} pada halaman tersebut. Pada Gambar \ref{fig:addAssignment} merupakan halaman \textit{add assignment}.
  \begin{figure}[h!]
      \centering
-     \includegraphics[width=1\linewidth]{Gambar/Add Assignment.PNG}
+     \includegraphics[width=0.9\linewidth]{Gambar/Add Assignment.PNG}
      \caption{Halaman \textit{Assignment}}
      \label{fig:addAssignment}
  \end{figure}
@@ -267,6 +267,9 @@ int main(int argc, char const *argv[])
         |-- output10.txt   
     \end{lstlisting}
     \end{itemize}
+    
+    Berikut ini merupakan contoh dari \textit{Tester}
+    
     
         \item \textit{Open} \newline
         Pengguna dapat membuka atau menutup \textit{assignment} menggunakan pilihan ini. Jika pengguna menutup \textit{assignment}, \textit{non-student users} masih dapat mengumpulkan \textit{assignment}. \\
@@ -414,5 +417,48 @@ $opt_d = 0;
     \item Pengguna dianjurkan untuk mendeteksi kode yang mirip setelah waktu \textit{assignment} berakhir, karena para peserta masih dapat mengubah \textit{Final Submissions} masing-masing sebelum waktu
     habis. Dengan cara tersebut, SharIF-Judge dapat mengirimkan \textit{Final submissions} para peserta ke server \textit{Moss}. 
 \end{itemize}
+\subsection{\textit{Submit}}
+\label{sec: Submit}
+
+ \begin{figure}[h!]
+     \centering
+     \includegraphics[width=0.9\linewidth]{Gambar/Submit_view.png}
+     \caption{Halaman \textit{Submit}}
+     \label{fig:Submit}
+ \end{figure}
+ Pada Gambar \ref{fig:Submit}, terdapat 4 fungsi yaitu \textit{problem}, \textit{Language}, \textit{Upload File}, dan tombol \textit{submit}. \textit{Problem} berfungsi untuk memilih permasalahan mana yang ingin dinilai. \textit{Language} berfungsi untuk memilih dengan bahasa pemrograman apa penilaian \textit{Problem} akan diperiksa. \textit{Upload File} berfungsi untuk mengirimkan file yang akan diperiksa oleh SharIF-Judge. \textit{Submit} berfungsi untuk mengirimkan permintaan untuk diperiksa oleh SharIF-Judge sesuai dengan ketentuan \textit{problem}, \textit{language}, dan file yang dimasukan peserta.
+ 
+ \newpage
+ \subsection{\textit{Final Submission}}
+\label{sec: Final Submission}
+
+ \begin{figure}[h!]
+     \centering
+     \includegraphics[width=0.9\linewidth]{Gambar/Final_Submission.png}
+     \caption{Halaman \textit{Final Submission}}
+     \label{fig:Submission}
+ \end{figure}
+ Pada Gambar \ref{fig:Submission} Menunjukan halaman \textit{Final Submission}. Pada halaman ini, terdapat daftar seluruh \textit{final submission} pada \textit{assignment} yang telah dipilih oleh peserta. Pengguna juga dapat melihat file atau kode program yang telah diunggah oleh peserta dan bahkan melihat nilai yang didapatkannya.
+
+
+\section{Analisis Sistem Usulan}
+\label{sec: Analisis Sistem Usulan}
+Agar SharIF-Judge dapat menerima, membaca, dan mengevaluasi \textit{Javascript} maka diperlukan adanya perubahan pada beberapa fungsi yang ada pada SharIF-Judge. Berikut ini merupakan beberapa fitur yang perlu dirubah: 
+
+ \begin{figure}[h!]
+     \centering
+     \includegraphics[width=0.9\linewidth]{Gambar/Assignment_view.png}
+     \caption{Tampilan \textit{Add Assignment}}
+     \label{fig:analisisAss}
+ \end{figure}
+ 
+ Pada Gambar \ref{fig:analisisAss} pada bagian \textit{Allowed Language}, dituliskan bahasa baru yaitu \textit{Javascript} dengan tujuan untuk memberi tahu kepada SharIF-Judge bahwa bahasa \textit{Javascript} merupakan salah satu bahasa yang diperbolehkan oleh pengguna.
+  \begin{figure}[h!]
+     \centering
+     \includegraphics[width=0.9\linewidth]{Gambar/Submit_view.png}
+     \caption{Halaman \textit{submit}}
+     \label{fig:analisisSubmit}
+ \end{figure}
+ Ketika pengguna menambahkan \textit{Javascript} pada fitur \textit{Allowed Language}, pada halaman submit ketika peserta ingin memilih bahasa pemrograman pilihan pada dropdown \textit{language} akan bertambah. Hal ini bertujuan agar peserta dapat memilih bahasa apa yang dipakai untuk diperiksa.
 
 % https://github.com/ifunpar/SharIF-Judge/tree/docs/v1.4 ayenz(?)
