@@ -435,6 +435,40 @@ Objek pada JavaScript adalah variabel yang berisi beberapa nilai data. Nilai dal
     "GRA 2032"
     \end{lstlisting}
     
+\subsection{\textit{Input and Output}}
+\label{sec: Input and Output}
+
+Agar \textit{Javascript} dapat menerima input dari console, diperlukan modul \textit{readline}. Modul \textit{Readline} pada Node.js memungkinkan pembacaan aliran \textit{input} baris demi baris. Modul ini membungkus output standar proses dan objek dengan proses input yang standar. Modul \textit{Readline} memudahkan untuk memberikan \textit{input} dan membaca \textit{output} yang diberikan oleh pengguna. berikut merupakan contoh penulisannya: 
+
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+var readline = require('readline');
+    \end{lstlisting}
+Untuk mengeluarkan output, pengguna dapat menggunakan kode \textit{console.log()}, berikut ini merupakan contoh kode program dari awal \textit{input} hingga akhir mengeluarkan \textit{output}: 
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+const readline = require('readline')
+
+const inquirer = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+inquirer.question("input first number ", number1 => {
+  inquirer.question("Input second number ", number2 => {
+    num1 = parseInt(number1)
+    num2 = parseInt(number2)
+      console.log(`${num1 + num2}`);
+      inquirer.close();
+  });
+});
+
+inquirer.on("close", function() {
+  console.log("Good bye!");
+  process.exit(0);
+});
+    \end{lstlisting}
+    
 \section{CodeIgniter 3}
 \label{sec:CodeIgniter} 
  
@@ -675,11 +709,103 @@ Node.js adalah lingkungan runtime JavaScript \textit{open-source} dan lintas pla
 Aplikasi Node.js berjalan dalam satu proses, tanpa membuat thread baru untuk setiap permintaan.
 Saat Node.js melakukan operasi \textit{Input}/\textit{Output} (I/O), seperti membaca dari jaringan, mengakses database atau sistem file, alih-alih memblokir \textit{thread} dan membuang siklus CPU menunggu, Node.js akan melanjutkan operasi saat respons kembali.
 
-Hal ini memungkinkan Node.js untuk menangani ribuan koneksi bersamaan dengan satu server tanpa menimbulkan beban mengelola konkurensi \textit{thread}, yang dapat menjadi sumber \textit{bug} yang signifikan.
+Hal ini memungkinkan Node.js untuk menangani ribuan koneksi bersamaan dengan satu server tanpa menimbulkan beban mengelola konkurensi \textit{thread}, yang dapat menjadi sumber \textit{bug} yang signifikan. Di Node.js, standar ECMAScript baru dapat digunakan tanpa masalah, karena tidak perlu menunggu semua pengguna memperbarui browser user dan bertanggung jawab untuk memutuskan versi ECMAScript mana yang akan digunakan dengan mengubah versi Node.js, dan juga dapat mengaktifkan fitur eksperimental tertentu dengan menjalankan Node.js dengan \textit{flag}.
 
-Di Node.js, standar ECMAScript baru dapat digunakan tanpa masalah, karena tidak perlu menunggu semua pengguna memperbarui browser user dan bertanggung jawab untuk memutuskan versi ECMAScript mana yang akan digunakan dengan mengubah versi Node.js, dan juga dapat mengaktifkan fitur eksperimental tertentu dengan menjalankan Node.js dengan \textit{flag}.
+Node.js dapat diinstal dengan berbagai cara. Paket resmi untuk semua platform utama tersedia di \url{https://nodejs.dev/download/}. Untuk menjalankan program Node.js terdapat perintah node yang tersedia secara global dan meneruskan nama file yang ingin dijalankan. Jika file aplikasi Node.js utama adalah app.js, dapat dipanggil dengan menuliskan: 
 
-\subsection{\textit{Twig}}
+     \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+node app.js
+    \end{lstlisting} 
+    Skrip tersebut secara eksplisit memberi tahu \textit{Shell} untuk menjalankan skrip dengan node.js
+    
+\subsection{\textit{Input} dan \textit{Output}}
+\label{sec: Input dan Output}
+Node.js menyediakan modul konsol yang menyediakan banyak cara yang sangat berguna untuk berinteraksi dengan baris perintah. Pada dasarnya konsol tersebut merupakan konsol yang sama dengan objek konsol yang ditemukan pada browser. Metode yang paling dasar dan paling sering digunakan adalah \textit{console.log()}, yang mencetak string yang diberikan pada konsol. \textit{Console.log()} dapat digunakan seperti sebagai berikut: 
+     \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+const x = 'x';
+const y = 'y';
+console.log(x, y);
+    \end{lstlisting} 
+berdasarkan kode diatas, node.js akan mencetak keduanya. Node.js juga memiliki format spesifik yaitu sebagai berikut: 
+     \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+console.log('My %s has %d ears', 'cat', 2);
+    \end{lstlisting}
+    \begin{itemize}
+        \item \%s memformat variabel sebagai string
+        \item \%d memformat variabel sebagai angka
+        \item \%i memformat variabel sebagai bagian integernya saja
+        \item \%o memformat variabel sebagai objek
+    \end{itemize}
+
+Node.js juga menyediakan modul readline untuk melakukan hal ini: dapatkan input dari aliran yang dapat dibaca seperti aliran \textit{process.stdin}, yang selama eksekusi program Node.js adalah input terminal, satu baris pada satu waktu.
+
+     \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+const readline = require('readline').createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+readline.question(`What's your name?`, name => {
+  console.log(`Hi ${name}!`);
+  readline.close();
+});
+    \end{lstlisting} 
+    Potongan kode ini menanyakan nama pengguna, dan setelah teks dimasukkan dan pengguna menekan enter. Metode \textit{question()} menunjukkan parameter pertama (pertanyaan) dan menunggu input pengguna. Ini memanggil fungsi panggilan balik setelah enter ditekan. Dalam fungsi panggilan balik ini, menutup antarmuka readline.
+    
+\subsection{\textit{Package Manager}}
+\label{sec: Package Manager}
+npm merupakan \textit{package manager} yang standar untuk Node.js. npm mengelola unduhan dependensi pada proyek. Jika sebuah proyek memiliki file package.json, dengan menjalankan:  
+     \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+npm install
+    \end{lstlisting} 
+    kode program tersebut akan menginstal semua yang dibutuhkan proyek, di folder \textit{node\_modules}, dan akan membuatnya jika belum ada. Modul dapat menginstal paket tertentu dengan menjalankan: 
+         \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+npm install <package-name>
+    \end{lstlisting}
+Sejak npm 5, perintah ini menambahkan <package-name> ke dependensi file package.json. Sebelum versi 5, diperlukan tanda --save. Seringkali tanda akan ditambahkan ke perintah sebagai berikut:
+    \begin{itemize}
+        \item \textit{--save-dev} menginstal dan menambahkan entri ke file \textit{package.json devDependencies}
+        \item --no-save menginstal tetapi tidak menambahkan entri ke dependensi file \textit{package.json}
+        \item --save-optional menginstal dan menambahkan entri ke file \textit{package.json optionalDependencies}
+        \item --no-optional akan mencegah dependensi opsional diinstal
+    \end{itemize}
+    Singkatan dari tanda juga dapat digunakan:
+        \begin{itemize}
+        \item -S: --save
+        \item -D: --save-dev
+        \item -O: --save-optional
+    \end{itemize}
+Perbedaan antara devDependencies dan dependensi adalah bahwa yang pertama berisi alat pengembangan, seperti perpustakaan pengujian, sedangkan yang terakhir dibundel dengan aplikasi dalam produksi. Adapun OptionalDependencies perbedaannya adalah bahwa kegagalan build dari dependensi tidak akan menyebabkan instalasi gagal. Tapi itu adalah tanggung jawab program untuk menangani kurangnya ketergantungan. 
+
+Jika ingin melakukan update pada \textit{package} dapat dilakukan dengan menggunakan perintah berikut: 
+     \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+npm update
+    \end{lstlisting} 
+npm akan memeriksa semua paket untuk versi yang lebih baru yang memenuhi batasan versi.
+
+npm dapat menentukan secara spesifik paket mana yang ingin diperbaharui dengan menuliskan perinta seperti berikut:
+     \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+npm update <package-name>
+    \end{lstlisting} 
+
+File \textit{package.json} mendukung format untuk menentukan file yang akan dijalankan dengan menggunakan perintah sebagai berikut: 
+     \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+        columns=fullflexible, breaklines=true, numbers=none]
+npm run <task-name>
+    \end{lstlisting} 
+    
+
+
+----------------------------------------------
+\section{\textit{Twig}}
 Pada perangkat lunak SharIF-Judge, kelas \textit{view} menggunakan \textit{framework} aplikasi yaitu \textit{Twig}. \textit{Twig} merupakan sebuah \textit{template engine modern} untuk PHP\cite{twig}. Sebuah \textit{template} \textit{Twig} dapat mengandung variables atau \textit{expression} dan \textit{tags}. \textit{Variables} atau \textit{expression} akan diubah pada saat \textit{template} \textit{Twig} dievaluasi dan \textit{tags} yang akan mengontrol logika dari \textit{template} tersebut. Berikut merupakan \textit{template} kode yang menunjukan beberapa hal mendasar.
 
  \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
