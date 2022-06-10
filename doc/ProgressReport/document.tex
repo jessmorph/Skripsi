@@ -1,0 +1,160 @@
+\documentclass[a4paper,twoside]{article}
+\usepackage[T1]{fontenc}
+\usepackage[bahasa]{babel}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{float}
+\usepackage[cm]{fullpage}
+\pagestyle{myheadings}
+\usepackage{etoolbox}
+\usepackage{setspace} 
+\usepackage{lipsum} 
+\setlength{\headsep}{30pt}
+\usepackage[inner=2cm,outer=2.5cm,top=2.5cm,bottom=2cm]{geometry} %margin
+% \pagestyle{empty}
+
+\makeatletter
+\renewcommand{\@maketitle} {\begin{center} {\LARGE \textbf{ \textsc{\@title}} \par} \bigskip {\large \textbf{\textsc{\@author}} }\end{center} }
+\renewcommand{\thispagestyle}[1]{}
+\markright{\textbf{\textsc{Laporan Perkembangan Pengerjaan Skripsi\textemdash Sem. Genap 2021/2022}}}
+
+\onehalfspacing
+ 
+\begin{document}
+
+\title{\@judultopik}
+\author{\nama \textendash \@npm} 
+
+%ISILAH DATA BERIKUT INI:
+\newcommand{\nama}{Edwin Pranajaya}
+\newcommand{\@npm}{2017730027}
+\newcommand{\tanggal}{21/06/2021} %Tanggal pembuatan dokumen
+\newcommand{\@judultopik}{Dukungan Bahasa JavaScript pada SharIF Judge} % Judul/topik anda
+\newcommand{\kodetopik}{PAN5291}
+\newcommand{\jumpemb}{1} % Jumlah pembimbing, 1 atau 2
+\newcommand{\pembA}{Pascal Alfadian Nugroho}
+\newcommand{\pembB}{-}
+\newcommand{\semesterPertama}{52 - Genap 21/22} % semester pertama kali topik diambil, angka 1 dimulai dari sem Ganjil 96/97
+\newcommand{\lamaSkripsi}{1} % Jumlah semester untuk mengerjakan skripsi s.d. dokumen ini dibuat
+\newcommand{\kulPertama}{Skripsi 1} % Kuliah dimana topik ini diambil pertama kali
+\newcommand{\tipePR}{B} % tipe progress report :
+% A : dokumen pendukung untuk pengambilan ke-2 di Skripsi 1
+% B : dokumen untuk reviewer pada presentasi dan review Skripsi 1
+% C : dokumen pendukung untuk pengambilan ke-2 di Skripsi 2
+
+% Dokumen hasil template ini harus dicetak bolak-balik !!!!
+
+\maketitle
+
+
+\pagenumbering{arabic}
+
+\section{Data Skripsi} %TIDAK PERLU MENGUBAH BAGIAN INI !!!
+Pembimbing utama/tunggal: {\bf \pembA}\\
+Pembimbing pendamping: {\bf \pembB}\\
+Kode Topik : {\bf \kodetopik}\\
+Topik ini sudah dikerjakan selama : {\bf \lamaSkripsi} semester\\
+Pengambilan pertama kali topik ini pada : Semester {\bf \semesterPertama} \\
+Pengambilan pertama kali topik ini di kuliah : {\bf \kulPertama} \\
+Tipe Laporan : {\bf \tipePR} -
+\ifdefstring{\tipePR}{A}{
+			Dokumen pendukung untuk {\BF pengambilan ke-2 di Skripsi 1} }
+		{
+		\ifdefstring{\tipePR}{B} {
+				Dokumen untuk reviewer pada presentasi dan {\bf review Skripsi 1}}
+			{	Dokumen pendukung untuk {\bf pengambilan ke-2 di Skripsi 2}}
+		}
+		
+\section{Latar Belakang}
+SharIF-Judge adalah \textit{online judge} gratis dan open source untuk bahasa pemrograman C, C++, Java dan Python. SharIF-Judge merupakan hasil \textit{fork} dari SharIF-Judge asli yang dibuat oleh Mohammad Javad Naderi. Versi bercabang ini mengandung banyak perbaikan, sebagian besar karena kebutuhan fakultas Informatika UNPAR.
+
+SharIF-Judge biasa digunakan untuk mempermudah evaluasi kode program.  SharIF-Judge digunakan pada beberapa kuliah di Informatika(IF), seperti Dasar Pemrograman dan Algoritma Struktur Data. Tujuan SharIF-Judge digunakan pada perkuliahan, adalah agar dapat mempermudah kegiatan belajar mengajar berlangsung. Mahasiswa dapat dengan mudah melakukan pengiriman kode program atau \textit{file} ke SharIF-Judge dan dapat langsung melihat nilainya. Pengajar yang bertanggung jawab atas kegiatan belajar mengajar tersebut tidak akan kesusahan dalam mengumpulkan hasil pekerjaan para pelajar. 
+
+Alur dari penggunaan SharIF-Judge ini diawali dengan pengajar yang membuat soal terlebih dahulu. Setelah soal disiapkan, pengajar dapat membuat \textit{assignment} dengan click tombol \textit{add assignment}. Didalamnya, pengajar diwajibkan untuk memasukan nama \textit{assignment}, waktu dimulainya pengerjaan, waktu selesai pengerjaan, waktu tambahan pengerjaan, daftar peserta, deskripsi soal, dan kunci jawaban dari soal yang sudah dibuat oleh pengajar. Meskipun SharIF-Judge dapat membaca berbagai bahasa pemrograman, JavaScript bukan salah satu yang dapat dibaca oleh SharIF-Judge.
+
+JavaScript adalah bahasa skrip sisi klien yang berjalan sepenuhnya di dalam \textit{browser web}. Sebagai contoh dapat dilihat \textit{menu drop-down} yang mencolok, memindahkan teks, dan mengubah konten yang sekarang tersebar luas di situs web. Semua interaksi tersebut diaktifkan melalui JavaScript. Berdasarkan survey yang diberikan pada stackoverflow pada tahun 2021, selama 9 tahun berturut-turut, JavaScript merupakan bahasa pemrograman yang paling sering digunakan. 64,96\% developer dari 83,052 responden di dunia menggunakannya.
+
+Berdasarkan data diatas, ditunjukan bahwa JavaScript termasuk dalam bahasa pemrograman yang sangat populer dan banyak digunakan. Sangat disayangkan jika SharIF Judge tidak dapat membaca bahasa tersebut. Akan kesulitan bagi para pengajar karena harus mengikuti perkembangan zaman, namun pemeriksaannya tidak mudah. Kostumisasi dari SharIF Judge akan dilakukan agar \textit{online judge} tersebut dapat membaca JavaScript. Untuk mempermudah kostumasi, pengerjaan akan dilakukan dengan menggunakan OS Linux. Namun dikarenakan OS yang digunakan adalah Windows, akan digunakan \textit{virtual machine} agar dapat mengerjakan dengan OS Linux pada Windows. 
+
+\section{Rumusan Masalah}
+Berdasarkan latar belakang tersebut, maka rumusan masalah penelitian sebagai berikut: 
+
+     Bagaimanakah cara agar SharIF-Judge dapat memahami bahasa pemrograman JavaScript untuk dievaluasi.
+
+\section{Tujuan}
+Berdasarkan rumusan masalah, maka tujuan penelitian ini adalah sebagai berikut:
+
+    Melakukan modifikasi pada SharIF-Judge agar dapat menerima soal JavaScript dan dapat melakukan evaluasi pada JavaScript.
+
+
+\section{Detail Perkembangan Pengerjaan Skripsi}
+Detail bagian pekerjaan skripsi sesuai dengan rencan kerja/laporan perkembangan terkahir :
+	\begin{enumerate}
+		\item \textbf{Melakukan instalasi pada SharIF-Judge}\\
+		{\bf Status :} Ada sejak rencana kerja skripsi.\\
+		{\bf Hasil :} Melakukan instalasi SharIF-Judge melalui github yang dimiliki oleh IF Unpar.
+		
+		\item \textbf{Menulis dokumen skripsi}\\
+		{\bf Status :} Ada sejak rencana kerja skripsi.\\
+		{\bf Hasil :} Dokumen skripsi telah dituliskan hingga Bab 3 yaitu analisis sistem kini dan analisis sistem usulan.
+
+		\item \textbf{Mempelajari javascript}\\
+		{\bf Status :} Ada sejak rencana kerja skripsi.\\
+		{\bf Hasil :} Melakukan studi literatur tentang javascript dan mencoba membuat program javascript sederahana agar lebih mengerti tentang input dan output javascript
+
+		\item \textbf{Memunculkan \textit{dropdown javascript} dan \textit{Allowed Language}}\\
+		{\bf Status :} Ada sejak rencana kerja skripsi.\\
+		{\bf Hasil :} Melakukan perubahan pada file \textit{assignment\_model.php} dan \textit{submit.php} pada bagian \textit{controller} agar dapat menggunakan opsi javascript namun belum memiliki fungsi.
+
+		\item \textbf{Mempelajari struktur SharIF-Judge}\\
+		{\bf Status :} Ada sejak rencana kerja skripsi.\\
+		{\bf Hasil :} SharIF-Judge dibuat dengan framework CodeIgniter. CodeIgniter merupakan framework PHP dengan arsitektur MVC (Model, View, Controller ) untuk mempermudah pembangunan web.
+
+		\item \textbf{Menyelesaikan kostumisasi pada SharIF-Judge}\\
+		{\bf Status :} ada sejak rencana kerja skripsi \\
+		{\bf Hasil :} belum selesai dikarenakan ditemukan bug  sehingga diprioritaskan dokumen dan dilanjutkan pada skripsi 2. Bug yang ditemukan seperti: 
+		    \begin{itemize}
+		        \item Ketika ingin memasukan file \textit{test case} muncul error yang disebabkan pada config.php terdapat typo
+		        \item Ketika \textit{add assignment} dan memasukan \textit{test case}, \textit{test case tersebut} dikatakan file not found. Hal ini disebabkan oleh \textit{End of Line Sequence} pada \textit{tester.sh} yang berawalan dari tipe CLRF dan dirubah menjadi LF. CR LF adalah singkatan dari "Carriage Return, Line Feed" yang merupakan sisa digital dari mesin tik klasik. Dengan mesin tik, Pengguna harus mendorong "carriage" (benda yang menahan kertas) kembali ke tempatnya, maka "Carriage Return". Sedangkan LF memindahkan kursor ke bawah ke baris berikutnya tanpa kembali ke awal baris.
+		    \end{itemize}
+		   
+
+		\item \textbf{Melakukan pengujian dan eksperimen} \\
+		{\bf Status :} Ada sejak rencana kerja skripsi.\\
+		{\bf Hasil :} Akan dilakukan pada Skripsi 2.
+
+	\end{enumerate}
+
+\section{Pencapaian Rencana Kerja}
+Langkah-langkah kerja yang berhasil diselesaikan dalam Skripsi 1 ini adalah sebagai berikut:
+\begin{enumerate}
+\item Mempelajari struktur pada  SharIF-Judge
+\item Mencoba membuat program sederhana javascript yang menerima input dari console
+\item Menyelesaikan \textit{bug} yang ada pada SharIF-Judge 
+\end{enumerate}
+
+
+\vspace{1cm}
+\centering Bandung, \tanggal\\
+\vspace{2cm} \nama \\ 
+\vspace{1cm}
+
+Menyetujui, \\
+\ifdefstring{\jumpemb}{2}{
+\vspace{1.5cm}
+\begin{centering} Menyetujui,\\ \end{centering} \vspace{0.75cm}
+\begin{minipage}[b]{0.45\linewidth}
+% \centering Bandung, \makebox[0.5cm]{\hrulefill}/\makebox[0.5cm]{\hrulefill}/2013 \\
+\vspace{2cm} Nama: \pembA \\ Pembimbing Utama
+\end{minipage} \hspace{0.5cm}
+\begin{minipage}[b]{0.45\linewidth}
+% \centering Bandung, \makebox[0.5cm]{\hrulefill}/\makebox[0.5cm]{\hrulefill}/2013\\
+\vspace{2cm} Nama: \pembB \\ Pembimbing Pendamping
+\end{minipage}
+\vspace{0.5cm}
+}{
+% \centering Bandung, \makebox[0.5cm]{\hrulefill}/\makebox[0.5cm]{\hrulefill}/2013\\
+\vspace{2cm} Nama: \pembA \\ Pembimbing Tunggal
+}
+\end{document}
+
