@@ -90,36 +90,182 @@ Berdasarkan rumusan masalah, maka tujuan penelitian ini adalah sebagai berikut:
 \section{Detail Perkembangan Pengerjaan Skripsi}
 Detail bagian pekerjaan skripsi sesuai dengan rencan kerja/laporan perkembangan terkahir :
 	\begin{enumerate}
-		\item \textbf{Melakukan instalasi pada SharIF-Judge}\\
+        \item \textbf{Melakukan instalasi pada SharIF-Judge}\\
 		{\bf Status :} Ada sejak rencana kerja skripsi.\\
-		{\bf Hasil :} Melakukan instalasi SharIF-Judge melalui github yang dimiliki oleh IF Unpar.
-		
-		\item \textbf{Menulis dokumen skripsi}\\
+		{\bf Hasil :} Instalasi SharIF-Judge dilakukan melalui github yang dimiliki oleh Informatika UNPAR. Untuk dapat menjalankan SharIF-Judge, diwajibkan untuk memiliki server Linux dan mengikuti persyaratan sebagai berikut:
+\begin{itemize}
+    \item Menjalankan PHP versi 5.3 atau versi yang lebih baru.
+    \item Pengguna dapat menjalankan PHP dari command line  dan pengguna perlu menginstall paket PHP CLI.
+    \item Memiliki \textit{Mysql} atau \textit{PostgreSql database}.
+    \item PHP memiliki akses untuk menjalankan perintah \textit{shell} terutama untuk fungsi \textit{shell\_exec}.
+    \item Untuk melakukan proses kompilasi dan menjalankan kode yang dikumpulkan adalah (\textit{gcc, g++, javac, java, python2, python3 commands})
+    \item Disarankan untuk melakukan instalasi \textit{Perl} dengan alasan agar memiliki ketepatan waktu, penggunaan \textit{memory} yang terbatas dan memaksimalkan batas ukuran pada \textit{output} kode yang dikirimkan.
+\end{itemize}
+Jika persyaratan diatas telah selesai dilakukan, dapat dilanjutkan untuk melakukan instalasi sebagai berikut: 
+\begin{itemize}
+    \item Mengunduh versi terakhir dari Sharif Judge dan unpack file yang berhasil diunduh, letakan pada direktori html publik
+    \item Untuk mempermudah pindahkan folder \textit{system}  dan \textit{application} keluar dari direktori publik dan masukan \textit{path} lengkap pada file index.php
+
+\begin{verbatim}
+        $system_path = `/home/mohammad/secret/system`;
+        $application_folder = `/home/mohammad/secret/application`;
+\end{verbatim} 
+    \item Membuat sebuah \textit{Mysql} atau \textit{PostgreSql database} untuk Sharif Judge.
+    \item Mengatur koneksi database di file application/config/database.php.
+
+\begin{verbatim}
+/* Enter database connection settings here: */
+`dbdriver' => `postgre', // database driver (mysqli, postgre)
+`hostname' => `localhost', // database host
+`username' => `, // database username
+`password' => `, // database password
+`database' => `, // database name
+`dbprefix' => `shj_', // table prefix
+/**********************************************/
+\end{verbatim} 
+
+
+    \item Membuat direktori application/cache/Twig agar dapat ditulis oleh PHP
+    \item Membuka halaman utama SharIF-Judge pada web browser \item \textit{Log in}  menggunakan akun \textit{admin}
+    \item Memindahkan folder \textit{tester} dan \textit{assigments} di luar direktori publik lalu simpan \textit{path} lengkap pada halaman \textit{Settings} . Dua folder tersebut harus dapat ditulis oleh PHP. File-file yang diunggah akan disimpan di folder \textit{assigments} sehingga tidak dapat diakses publik.
+\end{itemize}
+	\item \textbf{Menulis dokumen skripsi}\\
 		{\bf Status :} Ada sejak rencana kerja skripsi.\\
 		{\bf Hasil :} Dokumen skripsi telah dituliskan hingga Bab 3 yaitu analisis sistem kini dan analisis sistem usulan.
 
 		\item \textbf{Mempelajari javascript}\\
 		{\bf Status :} Ada sejak rencana kerja skripsi.\\
-		{\bf Hasil :} Melakukan studi literatur tentang javascript dan mencoba membuat program javascript sederahana agar lebih mengerti tentang input dan output javascript
+		{\bf Hasil :} Melakukan studi mengenai javascript. Javascript berfungsi untuk membantu membuat fungsionalitas pada halaman web, sedangkan HTML dan CSS membantu membuat desain halaman web. Javascript memiliki beberapa fungsi yang dapat digunakan, yaitu
+		\begin{itemize}
+		    \item \textbf{\textit{String}}. Merupakan nilai yang terdiri dari teks dan dapat berisi huruf, angka, simbol, tanda baca, dan emoji. berikut merupakan contoh kode	
+		    \begin{verbatim}
+EXAMPLE		  
+’This is a string.’
+		    \end{verbatim}
+		    \vspace{-5mm}
+		    \item \textbf{\textit{Numbers}}. Merupakan nilai yang dapat digunakan dalam operasi matematika
+		    \begin{verbatim}
+EXAMPLE		    
+12345;
+		    \end{verbatim}
+		    \vspace{-5mm}
+		    \item \textbf{\textit{Booleans}}. Merupakan nilai yang dapat berupa TRUE atau FALSE dimana nilai ini berarti hanya antara benar atau salah
+		    \begin{verbatim}
+EXAMPLE
+var kitchenLights = false;
+kitchenLights = true;
+kitchenLights;
+OUTPUT:
+true
+		    \end{verbatim}
+		    \vspace{-5mm}
+		    \item \textbf{\textit{Operators}}. Simbol antara nilai yang memungkinkan operasi yang berbeda seperti penambahan,pengurangan, perkalian, dll.
+		    \begin{verbatim}
+EXAMPLE:
+1+2;
+OUTPUT:
+3
+		    \end{verbatim}
+		    \vspace{-5mm}
 
-		\item \textbf{Memunculkan \textit{dropdown javascript} dan \textit{Allowed Language}}\\
-		{\bf Status :} Ada sejak rencana kerja skripsi.\\
-		{\bf Hasil :} Melakukan perubahan pada file \textit{assignment\_model.php} dan \textit{submit.php} pada bagian \textit{controller} agar dapat menggunakan opsi javascript namun belum memiliki fungsi.
+		    \item \textbf{\textit{Variables}}. Merupakan sesuatu yang akan dideklarasikan.
+		    \begin{verbatim}
+EXAMPLE
+var x = 100;		        
+		    \end{verbatim}
+		    \vspace{-5mm}
+		    \item \textbf{\textit{Functions}}. Merupakan  blok kode yang dapat digunakan kembali yang melakukan tugas tertentu, mengambil beberapa bentuk input dan mengembalikan output.
+		    \begin{verbatim}
+EXAMPLE
+function addTwoNumbers(x, y) {
+    return x + y;
+}		        
+		    \end{verbatim}
+		    \vspace{-5mm}
+		    \item \textbf{\textit{Conditionals}}. Merupakan cara untuk engontrol perilaku dalam JavaScript dan menentukan apakah potongan kode dapat dijalankan atau tidak.
+		    \begin{verbatim}
+    EXAMPLE:
+    if (10 > 5) {
+    var outcome = "if block";
+    }
+    outcome;
+    OUTPUT:
+    "if block"		        
+		    \end{verbatim}
+		    \vspace{-2mm}		    
+		    \item \textbf{\textit{Arrays}}. Merupakan nilai seperti wadah yang dapat menampung nilai, Elemen pada array tidak semuanya harus memiliki tipe nilai yang sama. Elemen dapat berupa nilai JavaScript apa pun bahkan array lain.
+		    \begin{verbatim}
+EXAMPLE:
+    var breakfast = ["coffee", "croissant"];
+    breakfast;
+    OUTPUT:
+    ["coffee", "croissant"]			        
+		    \end{verbatim}
+		    \vspace{-2mm}
+	    
+		    \item \textbf{\textit{Objects}}. Merupakan variabel yang berisi beberapa nilai data. ata. Nilai dalam objek JavaScript dikenal sebagai properti. 
+		    \begin{verbatim}
+EXAMPLE:
+    var hodgepodge = [100, "paint", [200, "brush"], false];
+    hodgepodge;
+    OUTPUT:
+    [100, "paint", [200, "brush"], false]		        
+		    \end{verbatim}
+		    \vspace{-2mm}
+		    
+		    \item \textbf{\textit{Input and Output}}. Untuk javascript, diperlukan menggunakan Modul \textit{Readline}. pada Node.js Modul \textit{Readline} memungkinkan pembacaan aliran input baris demi baris.
+		    \begin{verbatim}
+var readline = require('readline');
+		    \end{verbatim}
+		    \vspace{-2mm}
+		    
+		    \end{itemize}
 
-		\item \textbf{Mempelajari struktur SharIF-Judge}\\
-		{\bf Status :} Ada sejak rencana kerja skripsi.\\
-		{\bf Hasil :} SharIF-Judge dibuat dengan framework CodeIgniter. CodeIgniter merupakan framework PHP dengan arsitektur MVC (Model, View, Controller ) untuk mempermudah pembangunan web.
-
-		\item \textbf{Menyelesaikan kostumisasi pada SharIF-Judge}\\
+		\item \textbf{Melakukan kostumisasi pada SharIF-Judge}\\
 		{\bf Status :} ada sejak rencana kerja skripsi \\
-		{\bf Hasil :} belum selesai dikarenakan ditemukan bug  sehingga diprioritaskan dokumen dan dilanjutkan pada skripsi 2. Bug yang ditemukan seperti: 
+		{\bf Hasil :} Sudah memberikan perubahan pada tampilan sehingga pengguna dapat memilih \textit{javascript} namun belum memiliki fungsi. Hal tersebut dikarenakan ditemukan bug  sehingga diprioritaskan dokumen dan dilanjutkan pada skripsi 2. Bug yang ditemukan seperti: 
 		    \begin{itemize}
 		        \item Ketika ingin memasukan file \textit{test case} muncul error yang disebabkan pada config.php terdapat typo
 		        \item Ketika \textit{add assignment} dan memasukan \textit{test case}, \textit{test case tersebut} dikatakan file not found. Hal ini disebabkan oleh \textit{End of Line Sequence} pada \textit{tester.sh} yang berawalan dari tipe CLRF dan dirubah menjadi LF. CR LF adalah singkatan dari "Carriage Return, Line Feed" yang merupakan sisa digital dari mesin tik klasik. Dengan mesin tik, Pengguna harus mendorong "carriage" (benda yang menahan kertas) kembali ke tempatnya, maka "Carriage Return". Sedangkan LF memindahkan kursor ke bawah ke baris berikutnya tanpa kembali ke awal baris.
 		    \end{itemize}
-		   
+	
+	    \item \textbf{Melakukan eksplorasi pada  SharIF-Judge}\\
+		{\bf Status :} Ada sejak rencana kerja skripsi.\\
+-		{\bf Hasil :} SharIF-Judge adalah \textit{online judge} gratis dan open source untuk bahasa pemrograman C, C++, Java dan Python. SharIF-Judge merupakan hasil \textit{fork} dari Sharif Judge yang dibuat oleh Mohammad Javad Naderi. Versi bercabang ini mengandung banyak perbaikan, sebagian besar karena kebutuhan fakultas Informatika UNPAR. Antarmuka web ditulis dalam PHP (kerangka CodeIgniter) dan backend utama ditulis dalam BASH.-Python di SharIF Judge belum di-sandbox. Hanya tingkat keamanan rendah yang disediakan untuk python. SharIF-Judge dibuat dengan menggunakan sebuah \textit{framework} yang bernama CodeIgniter. CodeIgniter merupakan framework PHP dengan memiliki arsitektur MVC(Model, View, Controller) untuk mempermudah pembangunan web. Berikut ini merupakan fitur-fitur dari SharIF-Judge:
+\begin{figure}[h!]
+     \centering
+     \includegraphics[width=0.5\linewidth]{Gambar/Usecase Diagram.PNG}
+     \caption{\textit{Use Case Diagram}}
+     \label{fig:Use Case Diagram}
+ \end{figure}\newline
+Pada Gambar \ref{fig:Use Case Diagram} ditunjukan bahwa terdapat 4 \textit{role} pada SharIF-Judge dari yang memiliki fungsi paling banyak hingga paling sedikit berturut-turut yaitu Admin, \textit{Head Instructor}, \textit{Instructor}, dan \textit{Student}.
 
-		\item \textbf{Melakukan pengujian dan eksperimen} \\
+\newpage
+\begin{figure}[h!]
+     \centering
+     \includegraphics[width=0.8\linewidth]{Gambar/Assignment.png}
+     \caption{Halaman \textit{Assignment}}
+     \label{fig:Assignment}
+ \end{figure}	
+ Pada Gambar \ref{fig:Assignment} merupakan halaman \textit{Assignment}, bagi role \textit{student}  halaman \textit{assignment} ini berfungsi sebagai tempat untuk melihat seluruh \textit{assignment} yang ada dan dapat memilih salah satunya. Namun, untuk \textit{role} Admin, dan \textit{Head Instructor} halaman \textit{assignment} dapat berguna untuk menambahkan \textit{assignment} pada \textit{add assignment}, edit, atau bahkan menghapus \textit{assignment}. 
+ 
+ \begin{figure}[h!]
+     \centering
+     \includegraphics[width=0.8\linewidth]{Gambar/Add Assignment.PNG}
+     \caption{Halaman \textit{Add Assignment}}
+     \label{fig:addAss}
+ \end{figure}
+ Gambar \ref{fig:addAss} merupakan halaman pada \textit{Add Assignment}. Halaman tersebut memiliki fungsi untuk Admin dan \textit{Head Instructor} menambahkan \textit{Assignment}. Pada bagian \textit{Allowed Language}, akan dilakukan kostumisasi agar javascript menjadi salah satu bahasa yang diterima oleh SharIF-Judge.
+ \newpage
+  \begin{figure}[h!]
+     \centering
+     \includegraphics[width=0.8\linewidth]{Gambar/Submit_view.png}
+     \caption{Halaman \textit{Submit}}
+     \label{fig:submit}
+ \end{figure}
+ Gambar \ref{fig:submit} merupakan halaman pada \textit{Submit}. Halaman tersebut memiliki fungsi ketika pengguna ingin melakukan \textit{upload} file untuk dievaluasi. Pada halaman \textit{submit} pengguna terlebih dahulu memilih permasalahan yang mana yang akan dikumpulkan dan dengan bahasa pemrograman apa permasalahan tersebut dievaluasi. Setelah itu pengguna dapat \textit{upload} file dan tekan tombol \textit{submit}.
+ 
+	    \item \textbf{Melakukan pengujian dan eksperimen} \\
 		{\bf Status :} Ada sejak rencana kerja skripsi.\\
 		{\bf Hasil :} Akan dilakukan pada Skripsi 2.
 
