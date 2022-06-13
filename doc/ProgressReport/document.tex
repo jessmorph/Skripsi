@@ -66,20 +66,21 @@ Tipe Laporan : {\bf \tipePR} -
 		}
 		
 \section{Latar Belakang}
-SharIF-Judge adalah \textit{online judge} gratis dan open source untuk bahasa pemrograman C, C++, Java dan Python. SharIF-Judge merupakan hasil \textit{fork} dari SharIF-Judge asli yang dibuat oleh Mohammad Javad Naderi. Versi bercabang ini mengandung banyak perbaikan, sebagian besar karena kebutuhan fakultas Informatika UNPAR.
+SharIF-Judge adalah \textit{online judge} gratis dan open source untuk bahasa pemrograman C, C++, Java dan Python. SharIF-Judge merupakan hasil \textit{fork} dari Sharif Judge yang dibuat oleh Mohammad Javad Naderi. Versi bercabang ini mengandung banyak perbaikan, sebagian besar karena kebutuhan fakultas Informatika UNPAR.
 
-SharIF-Judge biasa digunakan untuk mempermudah evaluasi kode program.  SharIF-Judge digunakan pada beberapa kuliah di Informatika(IF), seperti Dasar Pemrograman dan Algoritma Struktur Data. Tujuan SharIF-Judge digunakan pada perkuliahan, adalah agar dapat mempermudah kegiatan belajar mengajar berlangsung. Mahasiswa dapat dengan mudah melakukan pengiriman kode program atau \textit{file} ke SharIF-Judge dan dapat langsung melihat nilainya. Pengajar yang bertanggung jawab atas kegiatan belajar mengajar tersebut tidak akan kesusahan dalam mengumpulkan hasil pekerjaan para pelajar. 
+SharIF-Judge biasa digunakan untuk mempermudah evaluasi kode program.  SharIF-Judge digunakan pada beberapa kuliah di Informatika(IF), seperti Dasar Pemrograman dan Algoritma Struktur Data. Tujuan SharIF-Judge digunakan pada perkuliahan, yaitu agar dapat mempermudah kegiatan belajar mengajar berlangsung. Mahasiswa dapat dengan mudah melakukan pengiriman kode program atau \textit{file} ke SharIF-Judge dan dapat langsung melihat nilainya. Pengajar yang bertanggung jawab atas kegiatan belajar mengajar tersebut tidak akan kesusahan dalam mengumpulkan hasil pekerjaan para pelajar. 
 
 Alur dari penggunaan SharIF-Judge ini diawali dengan pengajar yang membuat soal terlebih dahulu. Setelah soal disiapkan, pengajar dapat membuat \textit{assignment} dengan click tombol \textit{add assignment}. Didalamnya, pengajar diwajibkan untuk memasukan nama \textit{assignment}, waktu dimulainya pengerjaan, waktu selesai pengerjaan, waktu tambahan pengerjaan, daftar peserta, deskripsi soal, dan kunci jawaban dari soal yang sudah dibuat oleh pengajar. Meskipun SharIF-Judge dapat membaca berbagai bahasa pemrograman, JavaScript bukan salah satu yang dapat dibaca oleh SharIF-Judge.
 
-JavaScript adalah bahasa skrip sisi klien yang berjalan sepenuhnya di dalam \textit{browser web}. Sebagai contoh dapat dilihat \textit{menu drop-down} yang mencolok, memindahkan teks, dan mengubah konten yang sekarang tersebar luas di situs web. Semua interaksi tersebut diaktifkan melalui JavaScript. Berdasarkan survey yang diberikan pada stackoverflow pada tahun 2021, selama 9 tahun berturut-turut, JavaScript merupakan bahasa pemrograman yang paling sering digunakan. 64,96\% developer dari 83,052 responden di dunia menggunakannya.
+JavaScript adalah bahasa skrip sisi klien yang berjalan sepenuhnya di dalam \textit{browser web}. Sebagai contoh \textit{menu drop-down} yang mencolok, memindahkan teks, dan mengubah konten yang sekarang tersebar luas di situs web. Semua interaksi tersebut diaktifkan melalui JavaScript. Berdasarkan survey yang diberikan pada stackoverflow pada tahun 2021, selama 9 tahun berturut-turut, JavaScript merupakan bahasa pemrograman yang paling sering digunakan. 64,96\% developer dari 83,052 responden di dunia menggunakannya.
 
-Berdasarkan data diatas, ditunjukan bahwa JavaScript termasuk dalam bahasa pemrograman yang sangat populer dan banyak digunakan. Sangat disayangkan jika SharIF Judge tidak dapat membaca bahasa tersebut. Akan kesulitan bagi para pengajar karena harus mengikuti perkembangan zaman, namun pemeriksaannya tidak mudah. Kostumisasi dari SharIF Judge akan dilakukan agar \textit{online judge} tersebut dapat membaca JavaScript. Untuk mempermudah kostumasi, pengerjaan akan dilakukan dengan menggunakan OS Linux. Namun dikarenakan OS yang digunakan adalah Windows, akan digunakan \textit{virtual machine} agar dapat mengerjakan dengan OS Linux pada Windows. 
+Berdasarkan data diatas, ditunjukan bahwa JavaScript termasuk dalam bahasa pemrograman yang sangat populer dan banyak digunakan. Sangat disayangkan jika SharIF-Judge tidak dapat membaca bahasa tersebut. Akan kesulitan bagi para pengajar karena harus mengikuti perkembangan zaman, namun pemeriksaannya tidak mudah. Kostumisasi dari SharIF-Judge akan dilakukan agar \textit{online judge} tersebut dapat membaca JavaScript. Untuk mempermudah kostumasi, pengerjaan akan dilakukan dengan menggunakan OS Linux. Namun dikarenakan OS yang digunakan adalah Windows, akan digunakan \textit{virtual machine} agar dapat mengerjakan dengan OS Linux pada Windows. 
 
+\newpage
 \section{Rumusan Masalah}
 Berdasarkan latar belakang tersebut, maka rumusan masalah penelitian sebagai berikut: 
 
-     Bagaimanakah cara agar SharIF-Judge dapat memahami bahasa pemrograman JavaScript untuk dievaluasi.
+     Bagaimanakah cara agar SharIF-Judge memahami bahasa pemrograman JavaScript untuk dievaluasi.
 
 \section{Tujuan}
 Berdasarkan rumusan masalah, maka tujuan penelitian ini adalah sebagai berikut:
@@ -203,7 +204,7 @@ EXAMPLE:
 		    \end{verbatim}
 		    \vspace{-2mm}
 	    
-		    \item \textbf{\textit{Objects}}. Merupakan variabel yang berisi beberapa nilai data. ata. Nilai dalam objek JavaScript dikenal sebagai properti. 
+		    \item \textbf{\textit{Objects}}. Merupakan variabel yang berisi beberapa nilai data Nilai dalam objek JavaScript dikenal sebagai properti. 
 		    \begin{verbatim}
 EXAMPLE:
     var hodgepodge = [100, "paint", [200, "brush"], false];
@@ -228,6 +229,7 @@ var readline = require('readline');
 		        \item Ketika ingin memasukan file \textit{test case} muncul error yang disebabkan pada config.php terdapat typo
 		        \item Ketika \textit{add assignment} dan memasukan \textit{test case}, \textit{test case tersebut} dikatakan file not found. Hal ini disebabkan oleh \textit{End of Line Sequence} pada \textit{tester.sh} yang berawalan dari tipe CLRF dan dirubah menjadi LF. CR LF adalah singkatan dari "Carriage Return, Line Feed" yang merupakan sisa digital dari mesin tik klasik. Dengan mesin tik, Pengguna harus mendorong "carriage" (benda yang menahan kertas) kembali ke tempatnya, maka "Carriage Return". Sedangkan LF memindahkan kursor ke bawah ke baris berikutnya tanpa kembali ke awal baris.
 		    \end{itemize}
+		   
 	
 	    \item \textbf{Melakukan eksplorasi pada  SharIF-Judge}\\
 		{\bf Status :} Ada sejak rencana kerja skripsi.\\
@@ -259,7 +261,7 @@ Pada Gambar \ref{fig:Use Case Diagram} ditunjukan bahwa terdapat 4 \textit{role}
  \newpage
   \begin{figure}[h!]
      \centering
-     \includegraphics[width=0.8\linewidth]{Gambar/Submit_view.png}
+     \includegraphics[width=0.7\linewidth]{Gambar/Submit_view.png}
      \caption{Halaman \textit{Submit}}
      \label{fig:submit}
  \end{figure}
@@ -275,6 +277,7 @@ Pada Gambar \ref{fig:Use Case Diagram} ditunjukan bahwa terdapat 4 \textit{role}
 Langkah-langkah kerja yang berhasil diselesaikan dalam Skripsi 1 ini adalah sebagai berikut:
 \begin{enumerate}
 \item Mempelajari struktur pada  SharIF-Judge
+\item Melakukan studi terhadap JavaScript
 \item Mencoba membuat program sederhana javascript yang menerima input dari console
 \item Menyelesaikan \textit{bug} yang ada pada SharIF-Judge 
 \end{enumerate}
