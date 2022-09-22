@@ -4,11 +4,10 @@ Bab ini membahas tentang analisis dari SharIF-Judge yang digunakan oleh Teknik I
 
 \section{Analisis Sistem Kini}
 \label{sec: Analisis Sistem Kini}
-Sharif Judge adalah online judge gratis untuk bahasa pemrograman C, C++, Java dan Python \cite{sharif_judge}. Perangkat lunak ini diciptakan oleh Mohammad Javad Naderi pada tahun 2014 dan bersifat open source. Antarmuka Sharif Judge ditulis menggunakan bahasa pemrograman PHP (framework CodeIgniter) dan backend menggunakan BASH.
-erikut ini merupakan fitur-fitur yang dimiliki oleh Sharif Judge antara lain yaitu:
+SharIF-Judge adalah \textit{online judge} gratis dan open source untuk bahasa pemrograman C, C++, Java dan Python. SharIF-Judge merupakan hasil \textit{fork} dari Sharif Judge yang dibuat oleh Mohammad Javad Naderi. Versi bercabang ini mengandung banyak perbaikan, sebagian besar karena kebutuhan fakultas Informatika UNPAR. Antarmuka web ditulis dalam PHP (kerangka CodeIgniter) dan backend utama ditulis dalam BASH.-Python di SharIF Judge belum di-sandbox. Hanya tingkat keamanan rendah yang disediakan untuk python. Berikut ini merupakan fitur-fitur yang dimiliki oleh SharIF-Judge antara lain yaitu:
 \begin{itemize}
-    \item {\textit{Multiple Role}}\newline
-        Pada SharIF-Judge, \textit{User} memiliki 4 jenis \textit{role} yang dibedakan berdasarkan level, dimana level tersebut digunakan untuk memisahkan aksi yang dapat dilakukan setiap \textit{role}. 4 \textit{role} tersebut adalah \textit{Admin}, \textit{Head Instructor}, \textit{Instructor}, dan \textit{Student}. 
+    \item \textbf{{\textit{Multiple Role}}}.
+    Pada SharIF-Judge, \textit{User} memiliki 4 jenis \textit{role} yang dibedakan berdasarkan level, dimana level tersebut digunakan untuk memisahkan aksi yang dapat dilakukan setiap \textit{role}. 4 \textit{role} tersebut adalah \textit{Admin}, \textit{Head Instructor}, \textit{Instructor}, dan \textit{Student}. 
         
     \begin{table}[H] %atau h saja untuk "kira kira di sini"
 	    \centering 
@@ -29,43 +28,18 @@ erikut ini merupakan fitur-fitur yang dimiliki oleh Sharif Judge antara lain yai
 	    \end{tabular} 
     \end{table}
     
-        Pada Tabel \ref{tab:level} menunjukan level role yang ada pada SharIF-Judge. Setiap \textit{role} tersebut, dapat melakukan aksi yang berbeda-beda yang disesuaikan dengan level role. Untuk melihat aksi apa saja yang dapat dilakukan setiap \textit{role} dapat dilihat pada Tabel \ref{tab:aksi}.
-    \begin{table}[H]
-	    \centering 
-	    \caption{Tabel \textit{Action}}
-	    \label{tab:aksi}
-	    \begin{tabular}{|c|c|c|c|c|}
-		    \hline
-		    \textit{Action} & \textit{Admin} & \textit{Head Instructor} & \textit{Instructor} & \textit{Student} \\
-		    \hline
-		    Mengubah \textit{Setting} & O & X & X & X \\
-		    \hline
-		    Menambah/Menghapus \textit{User} & O & X & X & X \\
-		    \hline
-		    Mengubah \textit{role users} & O & X & X & X \\
-		    \hline
-		    Menambah/Menghapus/Mengubah \textit{Assignment} & O & O & X & X \\
-		    \hline
-		    Mengunduh \textit{Test} & O & O & X & X \\
-		    \hline
-		    Menambah/Menghapus/Mengubah Notifikasi & O & O & X & X \\
-		    \hline
-		    Rejudge & O & O & X & X \\
-		    \hline
-		    Melihat/Pause/Melanjutkan/Submission Queue & O & O & X & X \\
-		    \hline
-		    Mendeteksi Kode yang Mirip  & O & O & X & X \\
-		    \hline
-		    Melihat Semua Kode  & O & O & O & X \\
-		    \hline
-		    Mengunduh Kode Final  & O & O & O & X \\
-		    \hline
-		    Memilih \textit{Assignment}   & O & O & O & O \\
-		    \hline
-		    Submit  & O & O & O & O \\
-		    \hline
-	    \end{tabular} 
-    \end{table}
+        Pada Tabel \ref{tab:level} menunjukan level role yang ada pada SharIF-Judge. Setiap \textit{role} tersebut, dapat melakukan aksi yang berbeda-beda yang disesuaikan dengan level role. Untuk melihat aksi apa saja yang dapat dilakukan setiap \textit{role} dapat dilihat pada Gambar \ref{fig:usecaseD}.
+   
+   \newpage
+  \begin{figure}[h!]
+     \centering
+     \includegraphics[width=0.8\linewidth]{Gambar/Use_case_Diagram.PNG}
+     \caption{Use Case Diagram SharIF-Judge}
+     \label{fig:usecaseD}
+ \end{figure}
+        
+        \newpage
+  
         Pengguna dapat menambahkan \textit{user} dengan menggunakan fitur \textit{Add User} pada halaman \textit{User}, Pengguna harus mengisi semua informasi yang ada pada text area. Baris dimulai dengan komentar
 \#. Setiap baris lainnya mewakili pengguna dengan sintaks berikut:
 
@@ -95,42 +69,42 @@ student6 st6@sharifjudge.ir random[6] student
 student7 st7@sharifjudge.ir random[6] student
     \end{lstlisting}
 
-    \item \textit{Sandboxing}\newline
-        \textit{Sandboxing} adalah sebuah mekanisme dimana sebuah aplikasi yang dikirimkan oleh pengguna, dapat dijalankan dalam lingkungan virtual yang aman dan menghindari adanya serangan keluar dari Sharif Judge. \\
+    \item \textbf{\textit{Sandboxing}}.
+        Sebuah mekanisme dimana sebuah aplikasi yang dikirimkan oleh pengguna, dapat dijalankan dalam lingkungan virtual yang aman dan menghindari adanya serangan keluar dari Sharif Judge. \\
         
-    \item \textit{Cheat Detection}
+    \item \textbf{\textit{Cheat Detection}}.
+    Berguna sebagai pendeteksi adanya kode yang mirip dan sebagai pendeteksi kecurangan. Untuk pengecekan digunakan \textit{Moss}(\textit{Measure Of Software Similarity}) Moss adalah perangkat lunak yang digunakan oleh guru dan penerbit untuk menemukan plagiarisme perangkat lunak. Perangkat lunak ini dikembangkan oleh Stanford, dan telah menjadi alat utama untuk memeriksa plagiarisme kode. MOSS diciptakan untuk menghentikan kelaziman pada siswa untuk menyalin kode dan langsung selesai tanpa adanya pengertian dari siswa terhadap pelajaran tersebut\cite{moss}
     
-    \textit{Cheat Detection} berguna sebagai pendeteksi adanya kode yang mirip dan sebagai pendeteksi kecurangan. Untuk pengecekan digunakan \textit{Moss}(\textit{Measure Of Software Similarity}) Moss adalah perangkat lunak yang digunakan oleh guru dan penerbit untuk menemukan plagiarisme perangkat lunak. Perangkat lunak ini dikembangkan oleh Stanford, dan telah menjadi alat utama untuk memeriksa plagiarisme kode. MOSS diciptakan untuk menghentikan kelaziman pada siswa untuk menyalin kode dan langsung selesai tanpa adanya pengertian dari siswa terhadap pelajaran tersebut\cite{moss} \\
-    \item Penilaian berbeda untuk keterlambatan pengumpulan
+    \item \textbf{Penilaian berbeda untuk keterlambatan pengumpulan}.
     
-    Hal ini berguna agar jika pelajar ada yang membutuhkan pengertian khusus dan memiliki alasan yang baik, pengajar dapat memberikan pengecualian dan memberikan hukuman ringan.\\
-    \item Antrian pengiriman \newline
-    Hal ini berguna agar Sharif Judge tidak \textit{down} akibat banyaknya pengiriman.\\
+    Hal ini berguna agar jika pelajar ada yang membutuhkan pengertian khusus dan memiliki alasan yang baik, pengajar dapat memberikan pengecualian dan memberikan hukuman ringan.
+    \item \textbf{Antrian pengiriman}.
+    Hal ini berguna agar Sharif Judge tidak \textit{down} akibat banyaknya pengiriman.
     
-    \item Mengunduh nilai dalam bentuk \textit{excel}\newline
-    Hal ini berguna agar pengajar tidak mendapatkan kesulitan untuk menyimpan data nilai pelajar.\\
+    \item \textbf{Mengunduh nilai dalam bentuk \textit{excel}}.
+    Hal ini berguna agar pengajar tidak mendapatkan kesulitan untuk menyimpan data nilai pelajar.
     
-    \item Mengunduh kode yang dikumpulkan dalam bentuk zip \newline
-    Hal ini berguna agar ketika kode yang harus dikumpulkan ada banyak dan ketika pengajar ingin memeriksa, file tersedia dengan rapih. \\
+    \item \textbf{Mengunduh kode yang dikumpulkan dalam bentuk zip}.
+    Hal ini berguna agar ketika kode yang harus dikumpulkan ada banyak dan ketika pengajar ingin memeriksa, file tersedia dengan rapih. 
     
-    \item Metode "Output Comparison" dan "Tester Code" untuk memeriksa \textit{output}. \newline
-    Hal ini berguna agar pelajar mengetahui apakah pekerjaan yang dikirimkan tersebut sudah benar atau masih kurang tepat. \\
+    \item \textbf{Metode "Output Comparison" dan "Tester Code" untuk memeriksa \textit{output}}.
+    Hal ini berguna agar pelajar mengetahui apakah pekerjaan yang dikirimkan tersebut sudah benar atau masih kurang tepat. 
     
-    \item Penilaian ulang \newline
-    Hal ini berguna agar ketika pengajar melakukan kesalahan penilaian, pengajar dapat melakukan edit. \\
-    \item Papan nilai\newline
-    Hal ini berguna agar pelajar dapat melihat nilai dari pelajar-pelajar yang lain dan bisa menjadi motivasi bagi pelajar tersebut. \\
-    \item Notifikasi \newline
+    \item \textbf{Penilaian ulang }.
+    Hal ini berguna agar ketika pengajar melakukan kesalahan penilaian, pengajar dapat melakukan edit.
+    \item \textbf{Papan nilai}.
+    Hal ini berguna agar pelajar dapat melihat nilai dari pelajar-pelajar yang lain dan bisa menjadi motivasi bagi pelajar tersebut. 
+    \item \textbf{Notifikasi }.
     hal ini berguna agar ketika ada tugas yang harus dikumpulkan, pelajar mengetahuinya dan tidak terlewat.
 \end{itemize}
 
 \subsection{Instalasi}
 \label{sec:Instalasi}
-Untuk dapat menjalankan Sharif Judge, diwajibkan untuk memiliki server Linux dan mengikuti tahapan sebagai berikut:
+Untuk dapat menjalankan SharIF-Judge, diwajibkan untuk memiliki server Linux dan mengikuti kebutuhannya sebagai berikut:
 \begin{itemize}
     \item Menjalankan PHP versi 5.3 atau versi yang lebih baru.
     \item Pengguna dapat menjalankan PHP dari command line  dan pengguna perlu menginstall paket PHP CLI.
-    \item Memiliki \textit{Mysql} atau \textit{PostgreSql databse}.
+    \item Memiliki \textit{Mysql} atau \textit{PostgreSql database}.
     \item PHP memiliki akses untuk menjalankan perintah \textit{shell} terutama untuk fungsi \textit{shell\_exec}. contohnya seperti \textit{command} di bawah ini: 
     
      \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
@@ -169,7 +143,7 @@ Jika persyaratan diatas telah selesai dilakukan, dapat melakukan instalasi sebag
 
 
     \item Membuat direktori application/cache/Twig agar dapat ditulis oleh PHP
-    \item Membuka halaman utama Sharif Judge pada web browser \item \textit{Log in}  menggunakan akun \textit{admin}
+    \item Membuka halaman utama SharIF-Judge pada web browser \item \textit{Log in}  menggunakan akun \textit{admin}
     \item Memindahkan folder \textit{tester} dan \textit{assigments} di luar direktori publik lalu simpan \textit{path} lengkap pada halaman \textit{Settings} . Dua folder tersebut harus dapat ditulis oleh PHP. File-file yang diunggah akan disimpan di folder \textit{assigments} sehingga tidak dapat diakses publik.
 \end{itemize}
 
@@ -359,6 +333,382 @@ Untuk melakukan pengumpulan jawaban pada sebuah \textit{assignment}, terdapat be
     \item Menekan tombol Submit untuk mengumpulkan jawaban.
 \end{enumerate}
     Setelah menekan tombol \textit{Submit}, pengguna akan diarahkan ke halaman \textit{All Submission}. Pada tahap ini, jawaban para peserta telah berhasil dikumpulkan ke SharIF-Judge dan peserta dapat memilih jawaban yang mana yang ingin dikumpulkan dengan mencentang salah satu jawaban yang telah dikumpulkan.
+    
+ \subsection{Mode, View, Controller}
+SharIF Judge menggunakan \textit{framework} CodeIgniter 3. Seperti yang telah dibahas pada \ref{sec:Model-View-Controller}, SharIF Judge menggunakan pola arsitektur MVC. Diagram kelas untuk SharIF Judge dapat dilihat pada gambar \ref{fig:kelas diagram}. Pada komponen \textit{View} digunakan simbol komentar dengan alasan \textit{view} tersebut tidak berbentuk kelas.
+  \begin{figure}[h!]
+     \centering
+     \includegraphics[width=0.9\linewidth]{Gambar/Kelas Diagram.PNG}
+     \caption{Kelas Diagram SharIF Judge}
+     \label{fig:kelas diagram}
+ \end{figure}
+ 
+\subsubsection{Model}
+Berikut ini merupakan \textit{model} pada SharIF Judge
+\begin{itemize}
+    \item Assignment\_model\\
+    Model ini bertujuan untuk menangani tabel shj\_assignments Fungsi yang dimiliki: 
+    \begin{itemize}
+        \item add\_assignment (\$id, \$edit)\\
+        Menambah atau memperbaharui \textit{assignment}.
+        \item delete\_assignment (\$assignment\_id) \\
+Menghapus sebuah assignment.
+        \item all\_assignments()\\
+    Mengambil seluruh assignment.
+        \item new\_assignment\_id()\\
+ Menentukan integer terkecil yang dapat digunakan sebagai id assignment baru.
+        \item all\_problems (\$assignment\_id)\\
+ Mengambil seluruh problem dari assignment.
+        \item problem\_info (\$assignment\_id, \$problem\_id)\\ 
+        Mengambil sebuah problem.
+        \item assignment\_info (\$assignment\_id)\\
+ Mengambil sebuah assignment.
+        \item is\_participant (\$participants, \$username)
+\newpage
+ Mengembalikan nilai TRUE jika \$username terdapat dalam \$participants 
+        \item increase\_total\_submits (\$assignment\_id)
+ Menambah jumlah total submit sebuah assignment sebanyak satu.
+        \item set\_moss\_time (\$assignment\_id)
+ Memperbarui ``\textit{Moss Update Time}'' untuk sebuah \textit{assignment}.
+        \item get\_moss\_time (\$assignment\_id)
+ Mengambil ``\textit{Moss Update Time}'' untuk sebuah \textit{assignment}.
+        \item save\_problem\_description (\$assignment\_id, \$problem\_id, \$text, \$type)\\
+ Menambah atau memperbarui deskripsi sebuah \textit{problem}.
+ \item \_update\_coefficients(\$a\_id, \$extra\_time, \$finish\_time, \$new\_late\_rule)\\
+ Memperbarui koefisien pada seluruh submission untuk sebuah assignment.
+    \end{itemize}
+    \item Hof\_model\\
+    Model dengan tujuan untuk menangani informasi pada \textit{hall of fame}. Fungsi yang dimiliki:
+    \begin{itemize}
+        \item get\_all\_final\_submission()\\
+ Mengambil seluruh final submission.
+        \item get\_all\_user\_assignments(\$username)\\
+ Mengambil seluruh assignment dan problem untuk user tertentu. 
+    \end{itemize}
+    \item Logs\_model \\
+ Model dengan tujuan untuk menangani tabel shj\_logins. Fungsi yang dimiliki:
+    \begin{itemize}
+        \item insert\_to\_logs (\$username, \$ip\_adrress) \\
+ Menambah sebuah catatan login dan menghapus catatan yang sudah melewati 24 jam.
+        \item get\_all\_logs ()\\
+ Mengambil seluruh catatan login.
+    \end{itemize}
+    \item Notifications\_model\\
+ Model yang bertujuan untuk menangani tabel shj\_notifications. Fungsi yang dimiliki:
+    \begin{itemize}
+        \item get\_all\_notifications ()\\
+ Mengambil seluruh notifikasi.
+        \item get\_latest\_notifications ()\\
+        Mengambil 10 notifikasi terbaru.
+        \item add\_notification (\$title, \$text)\\
+ Menambah notifikasi baru.
+        \item update\_notification (\$id, \$title, \$text) \\
+ Memperbarui sebuah notifikasi.
+        \item delete\_notification (\$id)\\
+ Menghapus sebuah notifikasi.
+        \item get\_notification (\$notif\_id)\\
+ Mengambil sebuah notifikasi.
+        \item have\_new\_notification (\$time)\\
+ Mengembalikan TRUE jika terdapat notifikasi setelah \$time.
+    \end{itemize}
+        \item Queue\_model \\
+ Model yang bertujuan untuk menangani tabel shj\_queue. Fungsi yang dimiliki:
+        \begin{itemize}
+            \item in\_queue(\$username, \$assignment, \$problem)\\
+ Mengembalikan nilai TRUE jika sebuah submission sudah berada dalam antrian.
+            \item get\_queue ()\\
+ Mengambil seluruh antrian.
+            \item empty\_queue ()\\
+ Mengosongkan antrian.
+            \item add\_to\_queue (\$submit\_info)\\
+ Menambahkan sebuah \textit{submission} ke dalam antrian.
+            \item rejudge (\$assignment\_id, \$problem\_id) \\
+ Menambahkan seluruh \textit{submission} dari sebuah \textit{problem} ke dalam antrian untuk dinilai ulang.
+            \item rejudge\_single (\$submission) \\
+ Menambahkan sebuah \textit{submission} ke dalam antrian untuk dinilai ulang.
+            \item get\_first\_item ()\\
+ Mengambil baris pertama dari antrian.
+            \item remove\_item (\$username, 
+            \$assignment, \$problem, \$submit\_id)
+ Menghapus sebuah baris dari antrian.
+            \item save\_judge\_result\_in\_db (\$submission, \$type)\\
+ Menyimpan hasil dari penilaian ke dalam \textit{database}.
+        \end{itemize}
+            \item Scoreboard\_model\\
+ Model yang bertujuan untuk menangani tabel shj\_scoreboard. Fungsi yang dimiliki:
+        \begin{itemize}
+            \item \_generate\_scoreboard(\$assignment\_id)\\
+ Membuat \textit{scoreboard} untuk sebuah \textit{assignment}.
+            \item update\_scoreboards ()\\
+ Memperbarui \textit{scoreboard} untuk seluruh \textit{assignment}.
+            \item update\_scoreboard (\$assignment\_id)\\
+ Memperbarui \textit{scoreboard} untuk sebuah \textit{assignment}. 
+            \item get\_scoreboard(\$assignment\_id)\\
+ Mengambil \textit{scoreboard} untuk sebuah \textit{assignment}.
+        
+        \end{itemize}
+            
+
+            \item Settings\_model\\
+ Model yang bertujuan untuk menangani tabel shj\_settings. Fungsi yang dimiliki:
+    \begin{itemize}
+        \item get\_setting(\$key)\\
+ Mengambil sebuah pengaturan.
+        \item set\_setting (\$key, \$value) \\
+        Memperbarui sebuah pengaturan.
+        \item get\_all\_settings ()\\
+        Mengambil seluruh pengaturan.
+        \item set\_settings (\$settings)\\
+ Memperbarui beberapa pengaturan.
+    \end{itemize}
+    \item Submit\_model\\
+    Model yang bertujuan untuk menangani tabel shj\_submissions. Fungsi yang dimiliki:
+        \begin{itemize}
+            \item get\_submission (\$uname, \$assignment, \$problem, \$submit\_id)\\
+ Mengambil sebuah \textit{submission}.
+            \item get\_final\_submissions (\$a\_id, \$u\_lv, \$uname, \$p\_num, \$f\_user, \$f\_prblm)\\
+ Mengambil seluruh \textit{final submission} untuk sebuah \textit{assignment}.
+            \item get\_all\_submissions (\$a\_id, \$u\_lv, \$uname, \$p\_num, \$f\_user, \$f\_prblm)\\
+ Mengambil seluruh \textit{submission} untuk sebuah \textit{assignment}.
+    \item count\_final\_submissions (\$a\_id, \$u\_lv, \$uname, \$f\_user, \$f\_prblm)\\
+ Menghitung jumlah \textit{final submission} dari \textit{user} tertentu.
+    \item count\_all\_submissions (\$a\_id, \$u\_lv, \$uname, \$f\_user, \$f\_prblm)\\
+ Menghitung jumlah \textit{submission} dari \textit{user} tertentu.
+    \item set\_final\_submission (\$uname, \$assignment, \$problem, \$submit\_id)\\
+ Memperbarui sebuah \textit{submission} menjadi \textit{final submission}.
+    \item add\_upload\_only (\$submit\_info)\\
+ Menambahkan \textit{submission upload only} ke dalam database.
+        \end{itemize}
+        \item User \\
+ Model yang bertujuan untuk menangani informasi preferensi setiap \textit{user}. Fungsi yang dimiliki:
+    \begin{itemize}
+        \item select\_assignment (\$assignment\_id)\\
+ Menetapkan \textit{assignment} yang dipilih.
+        \item save\_widget\_positions (\$positions)\\
+ Memperbarui posisi \textit{widget}.
+        \item get\_widget\_positions ()\\
+ Mengambil posisi \textit{widget}.
+    \end{itemize}
+    \item User\_model\\
+ Model yang bertujuan untuk menangani tabel shj\_users. Fungsi yang dimiliki:
+    \begin{itemize}
+        \item have\_user (\$username)\\
+ Mengembalikan nilai TRUE jika terdapat \textit{user} dengan nama \$username.
+    \item user\_id\_to\_username (\$user\_id)\\
+ Mengembalikan \textit{username} dari \textit{user} dengan id tertentu.
+    \item username\_to\_user\_id (\$username)\\
+ Mengembalikan id dari \textit{user} dengan \textit{username} tertentu.
+    \item have\_email (\$email, \$username)\\
+ Mengembalikan nilai TRUE jika terdapat \textit{user} selain \$username dengan email \$email.
+    \item add\_user (\$username, \$email, \$display\_name, \$password, \$role)\\
+ Menambahkan sebuah \textit{user} baru.
+    \item add\_users(\$text, \$send\_mail, \$delay)\\
+    Menambahkan \textit{user} baru.
+    \item delete\_user(\$user\_id)\\
+ Menghapus sebuah \textit{user}.
+    \item delete\_submissions(\$user\_id) \\
+ Menghapus seluruh \textit{submission} dari sebuah \textit{user}.
+    \item validate\_user(\$username, \$password)\\
+ Mengembalikan nilai TRUE jika \$username dan \$password valid untuk login.
+    \item selected\_assignment (\$username)\\
+ Mengembalikan \textit{assignment} yang telah dipilih oleh \textit{user}.
+    \item get\_names ()\\
+ Mengembalikan nama dari \textit{user}.
+    \item update\_profile (\$user\_id)\\
+ Memperbarui sebuah \textit{user}.
+    \item send\_password\_reset\_mail (\$email)\\
+ Mengirim email untuk \textit{reset password}.
+    \item passchange\_is\_valid (\$passchange\_key) \\
+ Mengembalikan nilai TRUE jika kunci untuk \textit{reset password valid}.
+    \item reset\_password (\$passchange\_key, \$newpassword)\\
+ Memperbarui \textit{password} menjadi kunci \textit{reset password}.
+    \item get\_all\_users ()\\
+ Mengambil seluruh \textit{user}.
+    \item get\_user(\$user\_id) \\
+ Mengambil sebuah \textit{user}.
+    \item update\_login\_time (\$username) \\
+ Memperbarui catatan login sebuah \textit{user}.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{View}
+
+\subsubsection{Controller}
+Berikut ini merupakan controller pada SharIF Judge:
+\begin{itemize}
+    \item Assignments \\
+ Controller yang bertujuan untuk menangani \textit{assignments}. Fungsi yang dimiliki:
+    \begin{itemize}
+        \item select ()\\
+ Memilih \textit{assignment} yang sedang ditampilkan.
+        \item pdf (\$assignment\_id, \$problem\_id) \\
+ Mengunduh \textit{file} PDF dari sebuah \textit{assignment}.
+        \item downloadtestsdesc (\$assignment\_id)\\
+ Mengunduh \textit{file test case} dari sebuah \textit{assignment}.
+        \item download\_submissions(\$type, \$assignment\_id)\\
+ Mengunduh seluruh \textit{file final submission} dari sebuah \textit{assignment}.
+    \item delete (\$assignment\_id)\\
+ Menghapus sebuah \textit{assignment}.
+    \item add () \\
+ Menambah atau memperbarui \textit{assignment}.
+    \item edit(\$assignment\_id) \\
+ Memperbarui \textit{assignment}.
+    \end{itemize}
+    \item Dashboard \\
+ Controller yang memiliki tujuan untuk menangani halaman Dashboard. Fungsi yang dimiliki:
+    \begin{itemize}
+        \item widget\_positions ()\\
+ Menyimpan posisi \textit{widget} dari \textit{user}.
+    \end{itemize}
+    \item Halloffame \\
+ Controller yang bertujuan untuk menangani halaman Hall of Fame . Fungsi yang dimiliki:
+    \begin{itemize}
+        \item hof\_details ()\\
+ Mengambil data yang diperlukan untuk \textit{hall of fame}.
+    \end{itemize}
+        \item Install \\
+ Controller yang bertujuan untuk menangani instalasi SharIF Judge.
+        \item Login \\
+ Controller yang bertujuan untuk menangani halaman-halaman \textit{login}. Fungsi yang dimiliki:
+    \begin{itemize}
+        \item register () \\
+ Registrasi user baru dan menampilkan halaman \textit{register}.
+        \item logout () \\
+ Log out user saat ini dan mengalihkan ke halaman \textit{login}.
+        \item lost () \\
+ Menangani email dan menampilkan halaman untuk \textit{reset password}.
+        \item reset(\$passchange\_key) \\
+ Memproses dan menampilkan halaman untuk ubah \textit{reset password}.
+    \end{itemize}
+        \item Logs \\
+ Controller yang bertujuan untuk menangani halaman \textit{24-hour Log}.
+    \begin{itemize}
+        \item index () \\
+        Mengambil data yang diperlukan dan menampilkan halaman \textit{24-hour Log}.
+    \end{itemize}
+        \item Moss \\
+ Controller yang bertujuan untuk menangani halaman \textit{Detect Similar Codes}. Fungsi yang dimiliki:
+    \begin{itemize}
+        \item update (\$assignment\_id)
+ Memperbarui informasi pada halaman \textit{Detect Similar Codes}.
+        \item \_detect (\$assignment\_id)
+ Menjalankan Moss untuk mendeteksi kesamaan kode.
+    \end{itemize}
+        \item Notifications
+ Controller yang bertujuan untuk menangani halaman \textit{Notifications}. Fungsinya yaitu:
+    \begin{itemize}
+        \item add () \\
+ Menambahkan notifikasi baru dan menampilkan halaman \textit{New Notification}.
+        \item edit (\$notif\_id)
+ Memperbarui sebuah notifikasi.
+        \item delete ()\\
+ Menghapus sebuah notifikasi.
+        \item check ()
+ Memeriksa adanya notifikasi baru.
+    \end{itemize}
+        \item Problems \\
+ Controller yang bertujuan untuk menangani halaman Problems. Fungsinya yaitu:
+    \begin{itemize}
+        \item index (\$assignment\_id, \$problem\_id = 1) \\
+ Mengambil data yang diperlukan dan menampilkan halaman \textit{Problems}.
+        \item edit (\$type = ’md’, \$assignment\_id, \$problem\_id = 1) \\
+ Memperbarui deskripsi \textit{problem} dan menampilkan halaman \textit{Edit Problem Description}. 
+    \end{itemize}
+        \item Profile \\
+        Controller yang bertujuan untuk menangani halaman \textit{Profile}. Fungsi yang dimiliki:
+        \begin{itemize}
+            \item index(\$user\_id)
+ Mengambil data yang diperlukan dan menampilkan halaman \textit{Profile}.
+            \item \_password\_check (\$str) \\
+ Memeriksa apakah \textit{password} sesuai dengan syarat.
+            \item \_password\_again\_check (\$str) //
+ Memeriksa apakah \textit{password again} sama dengan \textit{password} yang dimasukkan.
+            \item \_email\_check (\$email)
+ Memeriksa apakah terdapat \textit{user} dengan alamat email tertentu.
+            \item \_role\_check (\$role)
+ Memeriksa \textit{role} yang dimiliki \textit{user}.
+        \end{itemize}
+        \item Queue \\
+ Controller yang bertujuan untuk menangani halaman \textit{Queue}. Fungsi yang dimiliki:
+        \begin{itemize}
+            \item index () \\
+ Mengambil data yang diperlukan dan menampilkan halaman \textit{Queue}.
+            \item pause () \\
+ Memberhentikan antrian.
+            \item resume () \\
+ Melanjutkan antrian.
+            \item empty\_queue() \\
+ Mengosongkan antrian.
+        \end{itemize}
+            \item Queueprocess \\
+ Controller yang bertujuan untuk menangani proses penilaian kode. Fungsinya yaitu:
+    \begin{itemize}
+        \item run ()\\
+ Menilai setiap kode satu demi satu dari antrian.
+    \end{itemize}
+        \item Rejudge \\
+ Controller yang bertujuan untuk menangani halaman \textit{Rejudge}. Fungsinya yaitu:
+        \begin{itemize}
+            \item index ()\\
+ Mengambil data yang diperlukan dan menampilkan halaman \textit{Rejudge}.
+            \item rejudge\_single ()\\
+ Melakukan penilaian ulang untuk sebuah submission.
+        \end{itemize}
+            \item Server\_time
+ Controller yang bertujuan untuk menangani sinkronisasi waktu server. Fungsinya yaitu:
+        \begin{itemize}
+            \item index ()\\
+ Mengembalikan waktu \textit{server}.
+        \end{itemize}
+    \item Submissions \\
+ Controller yang bertujuan untuk menangani unduh \textit{submissions} menjadi file excel. Fungsinya yaitu:
+    \begin{itemize}
+        \item \_download\_excel (\$view)\\
+ Menggunakan \textit{library} PHPExcel untuk membuat file excel.
+        \item final\_excel ()\\
+ Mengunduh data \textit{final submissions} sebagai file excel.
+        \item all\_excel ()\\
+        Mengunduh data \textit{final submissions} sebagai file excel.
+        \item the\_final ()\\
+ Mengambil dan menampilkan data \textit{final submissions} yang akan diunduh.
+        \item all () \\
+ Mengambil dan menampilkan data \textit{submissions} yang akan diunduh.
+        \item select ()\\
+ Memilih \textit{final submission}.
+        \item view\_code ()\\
+ Menampilkan kode, \textit{result}, atau \textit{log} dari \textit{submission}.
+        \item download\_file ()\\
+ Mengunduh file excel.
+    \end{itemize}
+        \item Submit \\
+ Controller yang bertujuan untuk menangani submissions. Fungsinya yaitu:
+        \begin{itemize}
+            \item \_language\_to\_type (\$language) \\
+ Mengembalikan kode singkatan dari bahasa pemrograman.
+            \item \_match (\$type, \$extension) \\
+ Memeriksa apakah bahasa pemrograman dan tipe file sesuai.
+            \item \_check\_language (\$str) \\
+ Memeriksa apakah bahasa pemrograman yang dipilih \textit{valid}.
+            \item index ()\\
+ Mengambil data yang diperlukan dan menampilkan halaman \textit{Submit}.
+            \item \_upload ()\\
+ Menyimpan file yang diunggah dan menambahkannya ke dalam antrian.
+        \end{itemize}
+            \item Users \\
+ Controller yang bertujuan untuk menangani halaman \textit{Users}. Fungsinya yaitu:
+        \begin{itemize}
+            \item index () \\
+ Mengambil data yang diperlukan dan menampilkan halaman \textit{Users}.
+            \item add () \\
+ Menambah \textit{user} baru dan menampilkan halaman \textit{Add Users}.
+            \item delete ()\\
+ Menghapus \textit{user}.
+            \item delete\_submissions ()\\
+ Menghapus seluruh \textit{submission} dari sebuah \textit{user}.
+            \item list\_excel ()\\
+ Menggunakan \textit{library} PHPExcel untuk membuat file excel dari \textit{list user}.
+        \end{itemize}
+\end{itemize}
 
 \subsection{Clean URLs}
 \label{sec: Clean URLs}
@@ -439,26 +789,69 @@ $opt_d = 0;
      \label{fig:Submission}
  \end{figure}
  Pada Gambar \ref{fig:Submission} Menunjukan halaman \textit{Final Submission}. Pada halaman ini, terdapat daftar seluruh \textit{final submission} pada \textit{assignment} yang telah dipilih oleh peserta. Pengguna juga dapat melihat file atau kode program yang telah diunggah oleh peserta dan bahkan melihat nilai yang didapatkannya.
-
+ 
 
 \section{Analisis Sistem Usulan}
 \label{sec: Analisis Sistem Usulan}
-Agar SharIF-Judge dapat menerima, membaca, dan mengevaluasi \textit{Javascript} maka diperlukan adanya perubahan pada beberapa fungsi yang ada pada SharIF-Judge. Berikut ini merupakan beberapa fitur yang perlu dirubah: 
+Agar SharIF-Judge dapat menerima, membaca, dan mengevaluasi \textit{Javascript} maka diperlukan adanya kostumisasi pada beberapa fungsi yang ada di SharIF-Judge. Pada gambar \ref{fig:Usecaseusulan}, merupakan \textit{Use Case} Diagram sebagai tambahan fungsi yang dapat dilakukan oleh \textit{user}. Fitur-fitur yang akan ditambahkan, dapat digunakan oleh setiap \textit{role}. 
 
- \begin{figure}[h!]
+\begin{figure}[h!]
      \centering
-     \includegraphics[width=0.9\linewidth]{Gambar/Assignment_view.png}
-     \caption{Tampilan \textit{Add Assignment}}
-     \label{fig:analisisAss}
+     \includegraphics[width=0.4\linewidth]{Gambar/Use_Case_Diagram_Usulan.PNG}
+     \caption{\textit{Use Case Diagram Fitur Usulan}}
+     \label{fig:Usecaseusulan}
  \end{figure}
+
+%  \begin{figure}[h!]
+%      \centering
+%      \includegraphics[width=0.9\linewidth]{Gambar/Assignment_view.png}
+%      \caption{Tampilan \textit{Add Assignment}}
+%      \label{fig:analisisAss}
+%  \end{figure}
  
- Pada Gambar \ref{fig:analisisAss} pada bagian \textit{Allowed Language}, dituliskan bahasa baru yaitu \textit{Javascript} dengan tujuan untuk memberi tahu kepada SharIF-Judge bahwa bahasa \textit{Javascript} merupakan salah satu bahasa yang diperbolehkan oleh pengguna.
-  \begin{figure}[h!]
-     \centering
-     \includegraphics[width=0.9\linewidth]{Gambar/Submit_view.png}
-     \caption{Halaman \textit{submit}}
-     \label{fig:analisisSubmit}
- \end{figure}
- Ketika pengguna menambahkan \textit{Javascript} pada fitur \textit{Allowed Language}, pada halaman submit ketika peserta ingin memilih bahasa pemrograman pilihan pada dropdown \textit{language} akan bertambah. Hal ini bertujuan agar peserta dapat memilih bahasa apa yang dipakai untuk diperiksa.
+ Berikut ini merupakan beberapa penjelasan untuk fitur tambahannya:
+ \begin{itemize}
+     \item Upload kode program \textit{javascript} \\
+     Adanya kostumisasi fitur agar pengguna dapat memilih bahasa javascript, sehingga pengguna dapat melakukan upload kode program javascript. 
+     \begin{itemize}
+         \item Aktor: Pengguna
+         \item Syarat: 
+            \begin{enumerate}
+                \item Memilih javascript sebagai bahasa pilihan
+                \item memiliki file javascript
+            \end{enumerate}
+        \item Skenario: 
+            \begin{enumerate}
+                \item Pada halaman \textit{Add Assignment} bagian \textit{Allowed Language},  \textit{Role Admin} dan \textit{Head Instructor} menambahkan \textit{javascript} 
+                \item Pada halaman \textit{submit} bagian \textit{Language}, \textit{User} memilih \textit{javascript}
+                \item pada bagian file, \textit{User} memasukan file \textit{javascript}
+                \item \textit{User} click tombol submit.
+            \end{enumerate}
+     \end{itemize}
+        \item Melihat nilai hasil \textit{upload}\\
+            Adanya kostumisasi fitur agar file yang telah \textit{user upload} dapat dinilai sehingga nilai dapat dilihat oleh \textit{User}.
+            \begin{itemize}
+                \item Aktor : Pengguna 
+                \item Syarat: 
+                \begin{enumerate}
+                    \item Memilih \textit{javascript} sebagai bahasa pilihan.
+                    \item Memiliki file \textit{javascript}
+                    \item Sudah \textit{upload} file \textit{javascript}.
+                    \item Upload file \textit{javascript} berhasil. 
+                \end{enumerate}
+            \item Skenario: 
+            \begin{enumerate}
+                \item Pada halaman \textit{Add Assignment} bagian \textit{Allowed Language},  \textit{Role Admin} dan \textit{Head Instructor} menambahkan \textit{javascript} 
+                \item Pada halaman \textit{submit} bagian \textit{Language}, \textit{User} memilih \textit{javascript}
+                \item pada bagian file, \textit{User} memasukan file \textit{javascript}
+                \item \textit{User} click tombol submit.
+                \item \textit{User} akan dipindah ke halaman \textit{All Submission} secara otomatis dan melihat apakah file yang dipilih telah berhasil diunggah.
+                \item \textit{refresh} halaman \textit{All submission} dan \textit{User} akan dapat melihat nilainya.
+            \end{enumerate}
+            \end{itemize}
+ \end{itemize}
+ 
+%  \subsection{File Readme.md}
+%  Pada file \textit{Readme.md} dikatakan bahwa mengkompilasi dan menjalankan kode yang dikirimkan (perintah gcc, g++, javac, java, python2 dan python3), namun belum ditambahkan javascript karena javascript masih belum dapat dibaca oleh SharIF-Judge.
 
 % https://github.com/ifunpar/SharIF-Judge/tree/docs/v1.4 ayenz(?)
