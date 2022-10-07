@@ -1,0 +1,61 @@
+\chapter{Perancangan}
+\label{chap: Perancangan}
+Bab ini akan membahas perancangan perubahan kode program untuk fitur yang diimplementasi pada perangkat lunak SharIF Judge.
+
+\section{Rancangan Perubahan Kode Program}
+\label{sec: Rancangan Perubahan Kode Program}
+\begin{figure}[h!]
+     \centering
+     \includegraphics[width=0.9\linewidth]{Gambar/Kelas Diagram Rancangan.PNG}
+     \caption{Diagram kelas untuk kostumisasi SharIF Judge}
+     \label{fig:Diagramkelasrancangan}
+ \end{figure}
+ Agar fitur-fitur tambahan dapat digunakan, diperlukan adanya kostumisasi kode pada SharIF Judge. Pada gambar \ref{fig:Diagramkelasrancangan}, merupakan diagram kelas tersebut menunjukan kelas-kelas yang akan mengalami perubahan.
+ 
+ \subsection{Memilih bahasa javascript}
+ SharIF Judge sudah tersedia berbagai bahasa seperti Java, Python 2, Python 3, C, dan C++ dan \textit{user} dapat memilihnya dengan kondisi dimana pada saat melakukan \textit{add assignment} pada bagian \textit{allowed language}, bahasa tersebut disertakan. Namun ketika javascript ditambahkan pada \textit{allowed language}, \textit{user} belum dapat memilihnya pada saat ingin melakukan \textit{submit}. Agar \textit{user} dapat memilih javascript, dilakukan perubahan sebagai berikut: 
+ 
+ \begin{itemize}
+     \item \textit{Model} Assignment\_model
+     \begin{itemize}
+         \item Fungsi add\_assignment()\\
+         Penambahan \textit{script} ditujukan agar ketika dilakukan \textit{add assignment} dan memasukan JavaScript pada \textit{allowed language}, dan ketika \textit{user} ingin memilih language pada halaman \textit{submit}, \textit{dropdown language} memiliki pilihan JavaScript.
+     \end{itemize}
+ \end{itemize}
+ 
+ \subsection{Unggah file JavaScript}
+ \label{sec: Unggah file JavaScript}
+ Ketika \textit{user} memilih \textit{language} JavaScript dan mengunggah file .js, \textit{user} akan dikirmkan ke \textit{error page}. Hal tersebut terjadi karena SharIF Judge belum memahami adanya file .js sehingga diperlukan adanya kostumisasi sebagai berikut: 
+ 
+ \begin{itemize}
+     \item \textit{Controller} Submit
+     \begin{itemize}
+        \item Fungsi \_language\_to\_type()\\ Penambahan \textit{script} ditujukan agar ketika \textit{user} memilih \textit{language} JavaScript, SharIF Judge akan memahami bahwa tipe file JavaScript adalah .js.
+         \item Fungsi \_check\_language()\\
+         Penambahan \textit{script} ditujukan agar ketika memilih bahasa JavaScript dan mengunggah kode program JavaScript, SharIF Judge memahami bahwa sudah sesuai dengan \textit{language} yang dipilih.
+         \item Fungsi \_match()\\
+         Penambahan \textit{script} ditujukan untuk memastikan bahwa ketika \textit{user} memilih \textit{language} JavaScript, file .js dapat diterima dan dapat diunggah.
+     \end{itemize}
+ \end{itemize}
+ 
+ \subsection{Melihat bahasa yang diunggah}
+ \label{sec: Meilihat bahasa yang diunggah}
+ Ketika \textit{user} selesai mengunggah file dan menekan tombol \textit{submit}, \textit{user} akan dikirimkan ke halaman \textit{All Submission}. Namun jika \textit{user} mengunggah file javascript, pada kolom \textit{Language} akan kosong sehingga diperlukan adanya kostumisasi sebagai berikut: 
+ 
+ \begin{itemize}
+     \item \textit{helpers} shj\_helper
+     \begin{itemize}
+        \item Fungsi filetype\_to\_language()\\ Penambahan \textit{script} ditujukan agar pada kolom bagian \textit{Language} muncul bahwa bahasa yang digunakan adalah JavaScript.
+     \end{itemize}
+ \end{itemize}
+ 
+  \subsection{Melihat kode program yang diunggah}
+ \label{sec: Meilihat kode program yang diunggah}
+ Ketika \textit{user} selesai mengunggah file dan menekan tombol \textit{submit}, \textit{user} akan dikirimkan ke halaman \textit{All Submission}. pada kolom \textit{Code} jika \textit{user} mengunggah file javascript, \textit{user} tidak dapat melihat kode program yang diunggah sehingga diperlukan adanya kostumisasi sebagai berikut: 
+ 
+ \begin{itemize}
+     \item \textit{helpers} shj\_helper
+     \begin{itemize}
+        \item Fungsi filetype\_to\_extension()\\  Penambahan \textit{script} ditujukan agar ketika menekan tombol \textit{Code} pada kolom \textit{Code} akan muncul kode program yang diunggah.
+     \end{itemize}
+ \end{itemize}
