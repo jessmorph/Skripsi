@@ -1,0 +1,323 @@
+\chapter{Perancangan}
+\label{chap: Perancangan}
+Bab ini akan membahas perancangan perubahan kode program untuk fitur yang diimplementasi pada perangkat lunak SharIF Judge.
+
+\section{Rancangan Perubahan Kode Program}
+\label{sec: Rancangan Perubahan Kode Program}
+\begin{figure}[h!]
+     \centering
+     \includegraphics[width=0.5\linewidth]{Gambar/Rancangan.PNG}
+     \caption{\textit{List} yang akan dikostumisasi pada SharIF-Judge}
+     \label{fig:Rancangan}
+ \end{figure}
+ Agar fitur-fitur tambahan dapat digunakan, diperlukan adanya kostumisasi kode pada SharIF Judge. Pada gambar \ref{fig:Rancangan}, merupakan fungsi-fungsi yang akan mengalami perubahan.
+ 
+ \subsection{Memilih bahasa JavaScript}
+ SharIF-Judge sudah tersedia berbagai bahasa seperti Java, Python 2, Python 3, C, dan C++ dan \textit{user} dapat memilihnya dengan kondisi dimana pada saat melakukan \textit{add assignment} pada bagian \textit{allowed language}, bahasa tersebut disertakan. Namun ketika javascript ditambahkan pada \textit{allowed language}, \textit{user} belum dapat memilihnya pada saat ingin melakukan \textit{submit}. Agar \textit{user} dapat memilih javascript, dilakukan perubahan sebagai berikut: 
+ 
+ \begin{itemize}
+     \item \textit{Model} Assignment\_model
+     \begin{itemize}
+         \item Fungsi add\_assignment()\\
+         Penambahan \textit{script} ditujukan agar ketika dilakukan \textit{add assignment} dan memasukan JavaScript pada \textit{allowed language}, dan ketika \textit{user} ingin memilih language pada halaman \textit{submit}, \textit{dropdown language} memiliki pilihan JavaScript dengan kostumisasi kode program sebagai berikut
+         \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+Sebelum 
+
+if ( !in_array($item2, array('c','c++','python 2','python 3','java','zip','pdf','txt')))
+        continue;
+        
+// If the problem is not Upload-Only, its language should be one of {C,C++,Python 2, Python 3,Java}
+
+if ( !in_array($i, $uo) && ! in_array($item2, array('c','c++','python 2','python 3','java')) )
+        continue;
+
+    \end{lstlisting}
+
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+Sesudah 
+
+if ( !in_array($item2, array('c','c++','python 2','python 3','java','zip','pdf','txt','javascript')))
+        continue;
+        
+// If the problem is not Upload-Only, its language should be one of {C,C++,Python 2, Python 3,Java, JavaScript}
+
+if ( !in_array($i, $uo) && ! in_array($item2, array('c','c++','python 2','python 3','java','javascript')) )
+        continue;
+
+    \end{lstlisting}
+
+     \end{itemize}
+ \end{itemize}
+ 
+ \subsection{Unggah file JavaScript}
+ \label{sec: Unggah file JavaScript}
+ Ketika \textit{user} memilih \textit{language} JavaScript dan mengunggah file .js, \textit{user} akan dikirmkan ke \textit{error page}. Hal tersebut terjadi karena SharIF Judge belum memahami adanya file .js sehingga diperlukan adanya kostumisasi sebagai berikut: 
+ 
+ \begin{itemize}
+     \item \textit{Controller} Submit
+     \begin{itemize}
+        \item Fungsi \_language\_to\_type()\\ Penambahan \textit{script} ditujukan agar ketika \textit{user} memilih \textit{language} JavaScript, SharIF Judge akan memahami bahwa tipe file JavaScript adalah .js. dengan kostumisasi kode program sebagai berikut: 
+
+         \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+Sebelum
+
+	public function _language_to_type($language)
+	{
+		$language = strtolower ($language);
+		switch ($language) {
+			case 'c': return 'c';
+			case 'c++': return 'cpp';
+			case 'python 2': return 'py2';
+			case 'python 3': return 'py3';
+			case 'java': return 'java';
+			case 'zip': return 'zip';
+			case 'pdf': return 'pdf';
+			case 'txt': return 'txt';
+			default: return FALSE;
+		}
+	}
+    \end{lstlisting}
+         \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+Sesudah
+
+	public function _language_to_type($language)
+	{
+		$language = strtolower ($language);
+		switch ($language) {
+			case 'c': return 'c';
+			case 'c++': return 'cpp';
+			case 'python 2': return 'py2';
+			case 'python 3': return 'py3';
+			case 'java': return 'java';
+			case 'zip': return 'zip';
+			case 'pdf': return 'pdf';
+			case 'txt': return 'txt';
+			case 'javascript': return 'js';
+			default: return FALSE;
+		}
+	}
+    \end{lstlisting}
+        
+         \item Fungsi \_check\_language()\\
+         Penambahan \textit{script} ditujukan agar ketika memilih bahasa JavaScript dan mengunggah kode program JavaScript, SharIF-Judge memahami bahwa file yang diunggah sudah sesuai dengan \textit{language} yang dipilih dengan kostumisasi kode program sebagai berikut:
+          \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+Sebelum
+
+	public function _check_language($str)
+	{
+		if ($str=='0')
+			return FALSE;
+		if (in_array( strtolower($str),array('c', 'c++', 'python 2', 'python 3', 'java', 'zip', 'pdf', 'txt')))
+			return TRUE;
+		return FALSE;
+	}
+    \end{lstlisting}
+        \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+Sesudah
+
+	public function _check_language($str)
+	{
+		if ($str=='0')
+			return FALSE;
+		if (in_array( strtolower($str),array('c', 'c++', 'python 2', 'python 3', 'java', 'zip', 'pdf', 'txt', 'javascript')))
+			return TRUE;
+		return FALSE;
+	}
+    \end{lstlisting}
+         
+         \item Fungsi \_match()\\
+         Penambahan \textit{script} ditujukan untuk memastikan bahwa ketika \textit{user} memilih \textit{language} JavaScript, file .js dapat diterima dan dapat diunggah dengan kostumisasi kode program sebagai berikut:
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+Sebelum
+
+public function _match($type, $extension)
+	{
+		switch ($type) {
+			case 'c': return ($extension==='c'?TRUE:FALSE);
+			case 'cpp': return ($extension==='cpp'?TRUE:FALSE);
+			case 'py2': return ($extension==='py'?TRUE:FALSE);
+			case 'py3': return ($extension==='py'?TRUE:FALSE);
+			case 'java': return ($extension==='java'?TRUE:FALSE);
+			case 'zip': return ($extension==='zip'?TRUE:FALSE);
+			case 'pdf': return ($extension==='pdf'?TRUE:FALSE);
+			case 'txt': return ($extension==='txt'?TRUE:FALSE);
+		}
+	}
+    \end{lstlisting}
+        \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+Sesudah
+
+public function _match($type, $extension)
+	{
+		switch ($type) {
+			case 'c': return ($extension==='c'?TRUE:FALSE);
+			case 'cpp': return ($extension==='cpp'?TRUE:FALSE);
+			case 'py2': return ($extension==='py'?TRUE:FALSE);
+			case 'py3': return ($extension==='py'?TRUE:FALSE);
+			case 'java': return ($extension==='java'?TRUE:FALSE);
+			case 'zip': return ($extension==='zip'?TRUE:FALSE);
+			case 'pdf': return ($extension==='pdf'?TRUE:FALSE);
+			case 'txt': return ($extension==='txt'?TRUE:FALSE);
+			case 'js': return ($extension==='js'?TRUE:FALSE);
+		}
+	}
+    \end{lstlisting}
+     \end{itemize}
+ \end{itemize}
+ 
+ \subsection{Melihat bahasa yang diunggah}
+ \label{sec: Meilihat bahasa yang diunggah}
+ Ketika \textit{user} selesai mengunggah file dan menekan tombol \textit{submit}, \textit{user} akan dikirimkan ke halaman \textit{All Submission}. Namun jika \textit{user} mengunggah file javascript, pada kolom \textit{Language} akan kosong sehingga diperlukan adanya kostumisasi sebagai berikut: 
+ 
+ \begin{itemize}
+     \item \textit{helpers} shj\_helper
+     \begin{itemize}
+        \item Fungsi filetype\_to\_language()\\ Penambahan \textit{script} ditujukan agar pada kolom bagian \textit{Language} muncul bahwa bahasa yang digunakan adalah JavaScript dengan kostumisasi kode program sebagai berikut: 
+        
+                 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+Sebelum 
+
+function filetype_to_language($file_type)
+	{
+		$file_type = strtolower($file_type);
+		switch ($file_type) {
+			case 'c': return 'C';
+			case 'cpp': return 'C++';
+			case 'py2': return 'Py 2';
+			case 'py3': return 'Py 3';
+			case 'java': return 'Java';
+			case 'zip': return 'Zip';
+			case 'pdf': return 'PDF';
+			case 'txt': return 'TXT';
+			default: return FALSE;
+		}
+	}
+    \end{lstlisting}
+
+         \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+Sesudah
+
+function filetype_to_language($file_type)
+	{
+		$file_type = strtolower($file_type);
+		switch ($file_type) {
+			case 'c': return 'C';
+			case 'cpp': return 'C++';
+			case 'py2': return 'Py 2';
+			case 'py3': return 'Py 3';
+			case 'java': return 'Java';
+			case 'zip': return 'Zip';
+			case 'pdf': return 'PDF';
+			case 'txt': return 'TXT';
+			case 'js': return 'Js';
+			default: return FALSE;
+		}
+	}
+    \end{lstlisting}
+
+     \end{itemize}
+ \end{itemize}
+ 
+  \subsection{Melihat kode program yang diunggah}
+ \label{sec: Meilihat kode program yang diunggah}
+ Ketika \textit{user} selesai mengunggah file dan menekan tombol \textit{submit}, \textit{user} akan dikirimkan ke halaman \textit{All Submission}. pada kolom \textit{Code} jika \textit{user} mengunggah file javascript, \textit{user} tidak dapat melihat kode program yang diunggah sehingga diperlukan adanya kostumisasi sebagai berikut: 
+ 
+ \begin{itemize}
+     \item \textit{helpers} shj\_helper
+     \begin{itemize}
+        \item Fungsi filetype\_to\_extension()\\  Penambahan \textit{script} ditujukan agar ketika menekan tombol \textit{Code} pada kolom \textit{Code} akan muncul kode program yang diunggah dengan kostumisasi kode program sebagai berikut.
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+Sebelum 
+
+	function filetype_to_extension($file_type)
+	{
+		$file_type = strtolower($file_type);
+		switch ($file_type) {
+			case 'c': return 'c';
+			case 'cpp': return 'cpp';
+			case 'py2': return 'py';
+			case 'py3': return 'py';
+			case 'java': return 'java';
+			case 'zip': return 'zip';
+			case 'pdf': return 'pdf';
+			case 'txt': return 'txt';
+			default: return FALSE;
+		}
+	}
+    \end{lstlisting}
+
+         \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+Sesudah
+
+	function filetype_to_extension($file_type)
+	{
+		$file_type = strtolower($file_type);
+		switch ($file_type) {
+			case 'c': return 'c';
+			case 'cpp': return 'cpp';
+			case 'py2': return 'py';
+			case 'py3': return 'py';
+			case 'java': return 'java';
+			case 'zip': return 'zip';
+			case 'pdf': return 'pdf';
+			case 'txt': return 'txt';
+			case 'js': return 'js';
+			default: return FALSE;
+		}
+	}
+    \end{lstlisting}
+     \end{itemize}
+     \subsection{Pengecekan kode program}
+     Ketika user selesai mengunggah file dan menekan tombol submit, kode program yang dikirim akan diperiksa untuk dilihat apakah kode tersebut terdapat kesalahan dalam penulisannya secara JavaScript atau tidak. Jika terdapat kesalahan, akan diperlihatkan dimana kesalahan penulisannya. namun jika tidak akan dicek input dan outputnya. sehingga diperlukan adanya penambahan kode program sebagai berikut: 
+     
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+if [ "$EXT" = "js" ]; then
+    cp ../javascript.policy javascript.policy
+    cp $PROBLEMPATH/$UN/$FILENAME.js $MAINFILENAME.js
+    shj_log "Compiling as Javascript"
+    node --check $MAINFILENAME.js >/dev/null 2>cerr 
+    EXITCODE=$?
+    COMPILE_END_TIME=$(($(date +%s%N)/1000000));
+    shj_log "Compiled. Exit Code=$EXITCODE  Execution Time: $((COMPILE_END_TIME-COMPILE_BEGIN_TIME)) ms"
+    if [ $EXITCODE -ne 0 ]; then
+        shj_log "Compile Error"
+        shj_log "$(cat cerr|head -10)"
+        echo '<span class="shj_b">Compile Error</span>' >$PROBLEMPATH/$UN/result.html
+        echo '<span class="shj_r">' >> $PROBLEMPATH/$UN/result.html
+        #filepath="$(echo "${JAIL}/${FILENAME}.${EXT}" | sed 's///\//g')" #replacing / with /
+        (cat cerr | head -10 | sed 's/&/&amp;/g' | sed 's/</&lt;/g' | sed 's/>/&gt;/g' | sed 's/"/&quot;/g') >> $PROBLEMPATH/$UN/result.html
+        #(cat $JAIL/cerr) >> $PROBLEMPATH/$UN/result.html
+        echo "</span>" >> $PROBLEMPATH/$UN/result.html
+        cd ..
+        rm -r $JAIL >/dev/null 2>/dev/null
+        shj_finish "Compilation Error"
+    fi
+fi
+    \end{lstlisting}
+     \subsection{Penilaian Kode Program}
+     Ketika user selesai mengunggah file dan menekan tombol submit, dan setelah kode program yang dikirim tersebut telah diperiksa dan tidak terdapat kesalahan dalam penulisannya secara JavaScript. Kode program akan dicek apakah \textit{input} dan \textit{output}nya sudah sesuai. Jika sudah maka akan muncul nilai dari user tersebut sehingga diperlukan adanya penambahan kode program sebagai berikut: 
+     
+    \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+    columns=fullflexible, breaklines=true, numbers=none]
+elif [ "$EXT" = "js" ]; then
+        if $PERL_EXISTS; then
+            ./runcode.sh $EXT $MEMLIMIT $TIMELIMIT $TIMELIMITINT $PROBLEMPATH/in/input$i.txt "./timeout --just-kill -nosandbox -l $OUTLIMIT -t $TIMELIMIT -m $MEMLIMIT javascript -O $FILENAME.js"
+        else
+            ./runcode.sh $EXT $MEMLIMIT $TIMELIMIT $TIMELIMITINT $PROBLEMPATH/in/input$i.txt "javascript -O $FILENAME.js"
+        fi
+        EXITCODE=$?
+    \end{lstlisting}
+ \end{itemize}
